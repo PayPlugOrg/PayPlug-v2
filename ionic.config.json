@@ -1,0 +1,8 @@
+{
+  "name": "AppPayPlug2",
+  "app_id": "21e1c547",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
