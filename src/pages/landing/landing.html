@@ -1,0 +1,42 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-buttons end *ngIf="showSkip">
+
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce [ngClass]="class">
+  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.icone" class="slide-image" />
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-navbar transparent>
+    <ion-buttons center>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="col-6">
+            <button uppercase ion-button solid large block color="light">
+              entrar
+            </button>
+          </ion-col>
+          <ion-col class="col-6">
+            <button uppercase ion-button solid large block color="orange-payplug">
+              criar conta
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-footer>
