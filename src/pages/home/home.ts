@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { LandingPage } from '../landing/landing';
 
 @Component({
@@ -8,13 +8,18 @@ import { LandingPage } from '../landing/landing';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    if (navParams.get('didLogin')) {
+      localStorage.setItem('didLogin', 'savio');
+    }
   }
 
   ionViewWillEnter() {
     var didLogin: boolean = false;
-    if(!localStorage.getItem('didLogin')) {
+    if (!localStorage.getItem('didLogin')) {
       this.navCtrl.setRoot(LandingPage);
     }
   }

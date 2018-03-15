@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -20,6 +21,20 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  login() {
+    this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
+      animate: true,
+      direction: 'forward'
+    })
+  }
+
+  register() {
+    this.navCtrl.push('RegisterPage', {}, {
+      animate: true,
+      direction: 'forward'
+    })
   }
 
 }

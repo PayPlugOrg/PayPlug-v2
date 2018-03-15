@@ -25,6 +25,7 @@ export class MyApp {
       splashScreen.hide();
     });
     this.initTranslate();
+    localStorage.clear();
   }
 
   initTranslate() {

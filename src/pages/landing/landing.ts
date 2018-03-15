@@ -51,25 +51,25 @@ export class LandingPage {
             title: values.TUTORIAL_SLIDE1_TITLE,
             description: values.TUTORIAL_SLIDE1_DESCRIPTION,
             image: 'slide1',
-            icone: 'assets/img/icone-slide1.png',
+            icone: 'assets/imgs/icone-slide1.png',
           },
           {
             title: values.TUTORIAL_SLIDE2_TITLE,
             description: values.TUTORIAL_SLIDE2_DESCRIPTION,
             image: 'slide2',
-            icone: 'assets/img/icone-slide2.png',
+            icone: 'assets/imgs/icone-slide2.png',
           },
           {
             title: values.TUTORIAL_SLIDE3_TITLE,
             description: values.TUTORIAL_SLIDE3_DESCRIPTION,
             image: 'slide3',
-            icone: 'assets/img/icone-slide3.png',
+            icone: 'assets/imgs/icone-slide3.png',
           },
           {
             title: values.TUTORIAL_SLIDE4_TITLE,
             description: values.TUTORIAL_SLIDE4_DESCRIPTION,
             image: 'slide4',
-            icone: 'assets/img/icone-slide4.png',
+            icone: 'assets/imgs/icone-slide4.png',
           }
         ]
       }
@@ -81,7 +81,14 @@ export class LandingPage {
   }
 
   startApp() {
-    this.navCtrl.setRoot('HomePage', {}, {
+    this.navCtrl.setRoot('LoginPage', {}, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
+
+  register() {
+    this.navCtrl.push('RegisterPage', {}, {
       animate: true,
       direction: 'forward'
     });

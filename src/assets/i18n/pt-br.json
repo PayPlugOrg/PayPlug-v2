@@ -17,11 +17,11 @@
   "TUTORIAL_SKIP_BUTTON": "Pular",
   "TUTORIAL_CONTINUE_BUTTON": "Continuar",
 
-  "TUTORIAL_SLIDE1_TITLE": "Bem-vindo ao Ionic Super Starter",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "O <b>Ionic Super Starter</b> é um starter para Ionic completo, com diversos componentes e páginas prontas para ser utilizado como guia de melhores práticas.",
+  "TUTORIAL_SLIDE1_TITLE": "Todos os seus bancos e cartões em um único aplicativo",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "e você ainda compra com descontos especiais nas lojas autorizadas, ganha cupons, tem chashback nas operações e muito mais.",
 
-  "TUTORIAL_SLIDE2_TITLE": "Como utilizar o Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Combine os tipos de páginas que você quer e remova aquelas que não precisa. No starter existem muitos casos de uso comuns de layouts e páginas como login, cadastro, abas e de tutorial.",
+  "TUTORIAL_SLIDE2_TITLE": "Faça a transação que quiser sem tirar a carteira do bolso",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Agora você pode fazer pagamentos com QRCode, transferir e receber créditos e cobrar via SMS com rapidez e segurança.",
 
   "TUTORIAL_SLIDE3_TITLE": "Iniciando o projeto",
   "TUTORIAL_SLIDE3_DESCRIPTION": "Precisa de ajuda? Dê uma olhada no README do Super Starter para um tutorial completo",

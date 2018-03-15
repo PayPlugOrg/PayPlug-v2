@@ -12,9 +12,9 @@
 <ion-content no-bounce [ngClass]="class">
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of slides">
-      <img [src]="slide.icone" class="slide-image" />
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-      <p [innerHTML]="slide.description"></p>
+      <img style="width: 80px; height: 80px;" [src]="slide.icone" class="slide-image" />
+      <h2 ion-text color="light" text-uppercase class="slide-title" [innerHTML]="slide.title"></h2>
+      <p ion-text color="light" text-uppercase [innerHTML]="slide.description"></p>
     </ion-slide>
   </ion-slides>
 </ion-content>
@@ -25,12 +25,12 @@
       <ion-grid>
         <ion-row>
           <ion-col class="col-6">
-            <button uppercase ion-button solid large block color="light">
+            <button text-uppercase ion-button solid large block color="light" (click)="startApp()">
               entrar
             </button>
           </ion-col>
           <ion-col class="col-6">
-            <button uppercase ion-button solid large block color="orange-payplug">
+            <button text-uppercase ion-button solid large block color="orange-payplug" (click)="register()">
               criar conta
             </button>
           </ion-col>
