@@ -13,8 +13,14 @@
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of slides">
       <img style="width: 80px; height: 80px;" [src]="slide.icone" class="slide-image" />
-      <h2 ion-text color="light" text-uppercase class="slide-title" [innerHTML]="slide.title"></h2>
-      <p ion-text color="light" text-uppercase [innerHTML]="slide.description"></p>
+      <h3 ion-text color="light" text-uppercase class="slide-title" [innerHTML]="slide.title"></h3>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8 offset-2>
+            <p class="landing-text" ion-text color="light" text-uppercase [innerHTML]="slide.description"></p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-slide>
   </ion-slides>
 </ion-content>
@@ -24,13 +30,13 @@
     <ion-buttons center>
       <ion-grid>
         <ion-row>
-          <ion-col class="col-6">
-            <button text-uppercase ion-button solid large block color="light" (click)="startApp()">
+          <ion-col col-sm-6>
+            <button text-uppercase ion-button solid  block color="light" (click)="startApp()">
               entrar
             </button>
           </ion-col>
-          <ion-col class="col-6">
-            <button text-uppercase ion-button solid large block color="orange-payplug" (click)="register()">
+          <ion-col col-sm-6>
+            <button text-uppercase ion-button solid block color="orange-payplug" (click)="register()">
               criar conta
             </button>
           </ion-col>

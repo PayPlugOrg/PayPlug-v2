@@ -24,7 +24,7 @@ export class LoginPage {
   }
 
   login() {
-    this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
+    this.navCtrl.push(HomePage, { didLogin: 'savio' }, {
       animate: true,
       direction: 'forward'
     })
@@ -34,7 +34,14 @@ export class LoginPage {
     this.navCtrl.push('RegisterPage', {}, {
       animate: true,
       direction: 'forward'
-    })
+    });
+  }
+
+  resetPassword() {
+    this.navCtrl.push('ResetPasswordPage', {}, {
+      animate: true,
+      direction: 'forward'
+    });
   }
 
 }

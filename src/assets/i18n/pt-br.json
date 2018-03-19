@@ -23,10 +23,11 @@
   "TUTORIAL_SLIDE2_TITLE": "Faça a transação que quiser sem tirar a carteira do bolso",
   "TUTORIAL_SLIDE2_DESCRIPTION": "Agora você pode fazer pagamentos com QRCode, transferir e receber créditos e cobrar via SMS com rapidez e segurança.",
 
-  "TUTORIAL_SLIDE3_TITLE": "Iniciando o projeto",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "Precisa de ajuda? Dê uma olhada no README do Super Starter para um tutorial completo",
-
-  "TUTORIAL_SLIDE4_TITLE": "Pronto para Usar?",
+  "TUTORIAL_SLIDE3_TITLE": "Facilidade, Rapidez e Segurança",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Evite filas e dor de cabeça: com payplug você pode escolher comprar e pagar com antecedência fazendo uma transação segura, rápida e confortável.",
+  
+  "TUTORIAL_SLIDE4_TITLE": "Confira promoções em tempo real",
+  "TUTORIAL_SLIDE4_DESCRIPTION": "Saiba onde comprar e quais os descontos estão sendo oferecidos perto de você.",
 
   "WELCOME_INTRO": "O ponto de partida para seu próximo app feito no Ionic",
 

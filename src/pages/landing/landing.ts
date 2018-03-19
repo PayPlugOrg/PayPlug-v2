@@ -43,6 +43,8 @@ export class LandingPage {
       "TUTORIAL_SLIDE2_DESCRIPTION",
       "TUTORIAL_SLIDE3_TITLE",
       "TUTORIAL_SLIDE3_DESCRIPTION",
+      "TUTORIAL_SLIDE4_TITLE",
+      "TUTORIAL_SLIDE4_DESCRIPTION",
     ]).subscribe(
       (values) => {
         console.log('Loaded values', values);
@@ -96,7 +98,9 @@ export class LandingPage {
 
   onSlideChangeStart(slider) {
     this.showSkip = !slider.isEnd();
-    this.class = this.slides[slider.getActiveIndex()].image;
+    if (this.slides[slider.getActiveIndex()]) {
+      this.class = this.slides[slider.getActiveIndex()].image;
+    }
   }
 
   ionViewDidEnter() {

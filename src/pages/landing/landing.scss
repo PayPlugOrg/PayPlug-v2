@@ -30,6 +30,9 @@ page-landing {
         -moz-background-size: cover;
         background-size: cover;
     }
+    .landing-text {
+      font-size: 14px;
+    }
     $slides-pagination-bullet-color-active:       color($colors, orange-payplug) !default;
     .swiper-pagination-bullet-active {
         background: $slides-pagination-bullet-color-active;

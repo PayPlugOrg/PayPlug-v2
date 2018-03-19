@@ -12,6 +12,8 @@ import { HomePage } from '../pages/home/home';
 import { LandingPage } from '../pages/landing/landing';
 import { LandingPageModule } from '../pages/landing/landing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ResetPasswordPageModule } from '../pages/reset-password/reset-password.module';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -33,13 +35,15 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    LandingPageModule
+    LandingPageModule,
+    ResetPasswordPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LandingPage
+    LandingPage,
+    ResetPasswordPage
   ],
   providers: [
     StatusBar,

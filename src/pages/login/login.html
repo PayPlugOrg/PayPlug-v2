@@ -7,28 +7,28 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="my-component">
 
   <ion-grid>
     <ion-row>
       <ion-col class="col-12">
         <ion-row>
           <ion-col>
-            <h3 color=blue-payplug text-uppercase>bem-vindo ao payplug</h3>
+            <h3 color=blue-payplug text-center ion-text text-uppercase>bem-vindo ao payplug</h3>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-item no-padding>
-              <ion-label text-uppercase floating>email ou cpf</ion-label>
+            <ion-item no-padding color=background-pay>
+              <ion-label ion-text color=blue-payplug text-uppercase floating>email ou cpf</ion-label>
               <ion-input name="username" type="text"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-item no-padding>
-              <ion-label text-uppercase floating>senha</ion-label>
+            <ion-item no-padding color=background-pay>
+              <ion-label ion-text color=blue-payplug text-uppercase floating>senha</ion-label>
               <ion-input name="password" type="password"></ion-input>
             </ion-item>
           </ion-col>
@@ -37,21 +37,21 @@
     </ion-row>
     <ion-row>
       <ion-col col-8 offset-2>
-        <button text-uppercase color=orange-payplug ion-button large block (click)="login()">
+        <button text-uppercase color=orange-payplug ion-button block (click)="login()">
           entrar
         </button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-8 offset-2>
-        <button text-uppercase color=blue-payplug ion-button large block (click)="register()">
+        <button text-uppercase color=blue-payplug ion-button block (click)="register()">
           nova conta
         </button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-8 offset-2>
-        <button text-uppercase color=blue-payplug ion-button large block (click)="resetPassword()">
+        <button text-uppercase color=blue-payplug ion-button block (click)="resetPassword()">
           esqueci a senha
         </button>
       </ion-col>

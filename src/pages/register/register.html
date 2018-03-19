@@ -17,4 +17,60 @@
 
 <ion-content padding class="image-back">
 
+  <ion-grid>
+    <ion-row>
+      <ion-col class="col-12">
+        <ion-row>
+          <ion-col>
+            <h4 color=light text-center ion-text text-uppercase>criar conta</h4>
+            <p color=light ion-text text-uppercase text-center>só precisamos de alguns dados para que sua conta seja criada.</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-label color=light ion-text text-uppercase floating>Nome completo</ion-label>
+              <ion-input color=light ion-text name="name" type="name"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding transparent>
+              <ion-label color=light ion-text text-uppercase floating>email</ion-label>
+              <ion-input color=light ion-text name="email" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-label color=light ion-text text-uppercase floating>cpf</ion-label>
+              <ion-input color=light ion-text name="cpf" type="cpf"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-label color=light ion-text text-uppercase floating>celular</ion-label>
+              <ion-input color=light ion-text name="celular" type="celular"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-8 offset-2>
+        <button text-uppercase color=orange-payplug ion-button large block (click)="register()">
+          enviar
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

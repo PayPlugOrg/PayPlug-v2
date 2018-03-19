@@ -20,3 +20,7 @@
 *:not(ion-icon) {
   font-family: 'Varela Round', sans-serif!important;
 }
+
+.my-component {
+  background: color($colors, background-pay, base);
+}
