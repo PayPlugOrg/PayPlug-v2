@@ -1,0 +1,86 @@
+<ion-header>
+
+    <ion-navbar transparent>
+      <ion-title>
+        <img height="40" src="assets/imgs/logo-azul.png">
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding class="my-component">
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col-12">
+          <ion-row>
+            <ion-col>
+              <h4 color=blue-payplug text-center ion-text text-uppercase>{{'REGISTER_TITLE' | translate}}</h4>
+              <p color=blue-payplug ion-text text-uppercase text-center>{{'REGISTER_DESCRIPTION_BUSINESS' | translate}}</p>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>CEP</ion-label>
+                <ion-input color=blue-payplug ion-text name="cep" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col col-8>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>endereço</ion-label>
+                <ion-input color=blue-payplug ion-text name="cpf" type="cpf"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-4>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>número</ion-label>
+                <ion-input color=blue-payplug ion-text name="numero" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>complemento</ion-label>
+                <ion-input color=blue-payplug ion-text name="complemento" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>tipo de estabelecimento</ion-label>
+                <ion-input color=blue-payplug ion-text name="estabelecimento" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  
+  </ion-content>
+  
+  <ion-footer no-border>
+    <ion-navbar transparent>
+      <ion-buttons center>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <button text-uppercase color=orange-payplug ion-button large full (click)="next('PasswordCreatePage')">
+                  {{'NEXT_BUTTON' | translate}}
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-footer>

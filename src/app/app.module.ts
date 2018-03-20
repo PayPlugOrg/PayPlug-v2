@@ -14,6 +14,16 @@ import { LandingPageModule } from '../pages/landing/landing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ResetPasswordPageModule } from '../pages/reset-password/reset-password.module';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import { RegisterPhonePage } from '../pages/register-phone/register-phone';
+import { RegisterPhonePageModule } from '../pages/register-phone/register-phone.module';
+import { RegisterPhoneCheckPageModule } from '../pages/register-phone-check/register-phone-check.module';
+import { RegisterPhoneCheckPage } from '../pages/register-phone-check/register-phone-check';
+import { RegisterOptionsPageModule } from '../pages/register-options/register-options.module';
+import { RegisterOptionsPage } from '../pages/register-options/register-options';
+import { RegisterBusinessPageModule } from '../pages/register-business/register-business.module';
+import { RegisterBusinessPage } from '../pages/register-business/register-business';
+import { RegisterBusinessAddressPageModule } from '../pages/register-business-address/register-business-address.module';
+import { RegisterBusinessAddressPage } from '../pages/register-business-address/register-business-address';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -36,14 +46,24 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     IonicModule.forRoot(MyApp),
     LandingPageModule,
-    ResetPasswordPageModule
+    ResetPasswordPageModule,
+    RegisterPhonePageModule,
+    RegisterOptionsPageModule,
+    RegisterPhoneCheckPageModule,
+    RegisterBusinessPageModule,
+    RegisterBusinessAddressPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     LandingPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    RegisterPhoneCheckPage,
+    RegisterOptionsPage,
+    RegisterBusinessPage,
+    RegisterBusinessAddressPage,
+    RegisterPhonePage
   ],
   providers: [
     StatusBar,

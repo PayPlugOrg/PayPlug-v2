@@ -16,6 +16,37 @@
 
   "TUTORIAL_SKIP_BUTTON": "Pular",
   "TUTORIAL_CONTINUE_BUTTON": "Continuar",
+  
+  "PASSWORD_CREATE_TITLE": "crie uma senha",
+  "PASSWORD_CREATE_DESCRIPTION": "ela deve conter 6 dígitos e é o seu passaporte pra usar o aplicativo.",
+  "PASSWORD_CREATE_BUTTON": "cadastrar senha",
+
+  "LANDING_TITLE": "nenhum outro app financeiro te dá tantas vantagens",
+  "LANDING_DESCRIPTION": "segurança, agilidade, facilidade e a certeza de que um mundo melhor começa com um mundo sem taxas.",
+  "LANDING_BUTTON": "vamos começar?",
+
+  "REGISTER_PHONE_TITLE": "cadastrar celular",
+  "REGISTER_PHONE_DESCRIPTION": "informe o número do seu celular, um código de ativação será enviado via sms.",
+  "REGISTER_PHONE_BUTTON": "ok!",
+
+  "REGISTER_OPTIONS_TITLE": "faça suas transações com facilidade e segurança",
+  "REGISTER_OPTIONS_DESCRIPTION": "confirme sua identidade para a segurança e agilidade do seu aplicativo payplug.",
+  "REGISTER_OPTIONS_FACEBOOK": "conectar com Facebook",
+  "REGISTER_OPTIONS_GOOGLE": "conectar com Google",
+  "REGISTER_OPTIONS_EMAIL": "conectar com email",
+  "REGISTER_OPTIONS_EMPRESA": "conectar minha empresa",
+  "REGISTER_OPTIONS_BUTTON": "já sou cadastrado",
+  
+  "REGISTER_PHONE_CHECK_TITLE": "confirmar celular",
+  "REGISTER_PHONE_CHECK_DESCRIPTION": "enviamos um código de confirmação para o seu celular via sms, digite-o no campo abaixo.",
+  "REGISTER_PHONE_CHECK_RESEND": "reenviar código",
+  "REGISTER_PHONE_CHECK_PLACEHOLDER": "código",
+  "REGISTER_PHONE_CHECK_BUTTON": "ok!",
+  
+  "REGISTER_TITLE": "complete o cadastro",
+  "REGISTER_DESCRIPTION_NORMAL": "mantenha o seu cadastro completo para usufruir ao máximo a experiência payplug.",
+  "REGISTER_DESCRIPTION_BUSINESS": "complete o cadastro da sua empresa para vender seus produtos na nossa loja e receber com rapidez e agilidade.",
+  "NEXT_BUTTON": "próximo",
 
   "TUTORIAL_SLIDE1_TITLE": "Todos os seus bancos e cartões em um único aplicativo",
   "TUTORIAL_SLIDE1_DESCRIPTION": "e você ainda compra com descontos especiais nas lojas autorizadas, ganha cupons, tem chashback nas operações e muito mais.",

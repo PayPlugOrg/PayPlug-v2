@@ -1,0 +1,80 @@
+<ion-header>
+
+    <ion-navbar transparent>
+      <ion-title>
+        <img height="40" src="assets/imgs/logo-azul.png">
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding class="my-component">
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col-12">
+          <ion-row>
+            <ion-col>
+              <h4 color=blue-payplug text-center ion-text text-uppercase>{{'REGISTER_TITLE' | translate}}</h4>
+              <p color=blue-payplug ion-text text-uppercase text-center>{{'REGISTER_DESCRIPTION_BUSINESS' | translate}}</p>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>Nome fantasia</ion-label>
+                <ion-input color=blue-payplug ion-text name="name" type="name"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>CNPJ</ion-label>
+                <ion-input color=blue-payplug ion-text name="cpf" type="cpf"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding transparent>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>e-mail</ion-label>
+                <ion-input color=blue-payplug ion-text name="email" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>telefone para contato</ion-label>
+                <ion-input color=blue-payplug ion-text name="celular" type="celular"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  
+  </ion-content>
+  
+  <ion-footer no-border>
+    <ion-navbar transparent>
+      <ion-buttons center>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <button text-uppercase color=orange-payplug ion-button large full (click)="next('RegisterBusinessAddressPage')">
+                  {{'NEXT_BUTTON' | translate}}
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-footer>

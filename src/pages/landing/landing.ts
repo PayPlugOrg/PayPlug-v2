@@ -37,43 +37,13 @@ export class LandingPage {
   ) {
     this.dir = platform.dir();
     this.translate.get([
-      "TUTORIAL_SLIDE1_TITLE",
-      "TUTORIAL_SLIDE1_DESCRIPTION",
-      "TUTORIAL_SLIDE2_TITLE",
-      "TUTORIAL_SLIDE2_DESCRIPTION",
-      "TUTORIAL_SLIDE3_TITLE",
-      "TUTORIAL_SLIDE3_DESCRIPTION",
-      "TUTORIAL_SLIDE4_TITLE",
-      "TUTORIAL_SLIDE4_DESCRIPTION",
+      "LANDING_TITLE",
+      "LANDING_DESCRIPTION",
+      "LANDING_BUTTON",
     ]).subscribe(
       (values) => {
         console.log('Loaded values', values);
-        this.slides = [
-          {
-            title: values.TUTORIAL_SLIDE1_TITLE,
-            description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'slide1',
-            icone: 'assets/imgs/icone-slide1.png',
-          },
-          {
-            title: values.TUTORIAL_SLIDE2_TITLE,
-            description: values.TUTORIAL_SLIDE2_DESCRIPTION,
-            image: 'slide2',
-            icone: 'assets/imgs/icone-slide2.png',
-          },
-          {
-            title: values.TUTORIAL_SLIDE3_TITLE,
-            description: values.TUTORIAL_SLIDE3_DESCRIPTION,
-            image: 'slide3',
-            icone: 'assets/imgs/icone-slide3.png',
-          },
-          {
-            title: values.TUTORIAL_SLIDE4_TITLE,
-            description: values.TUTORIAL_SLIDE4_DESCRIPTION,
-            image: 'slide4',
-            icone: 'assets/imgs/icone-slide4.png',
-          }
-        ]
+        
       }
     )
   }
@@ -91,6 +61,13 @@ export class LandingPage {
 
   register() {
     this.navCtrl.push('RegisterPage', {}, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
+  
+  registerPhone() {
+    this.navCtrl.push('RegisterPhonePage', {}, {
       animate: true,
       direction: 'forward'
     });

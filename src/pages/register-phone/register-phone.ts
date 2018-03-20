@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the RegisterPhonePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,23 +11,24 @@ import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-register-phone',
+  templateUrl: 'register-phone.html',
 })
-export class RegisterPage {
+export class RegisterPhonePage {
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public translate: TranslateService
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public translate: TranslateService,
   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    console.log('ionViewDidLoad RegisterPhonePage');
   }
 
-  next(page) {
-    this.navCtrl.push(page, {}, {
+  sendSms() {
+    this.navCtrl.push('RegisterPhoneCheckPage', {}, {
       animate: true,
       direction: 'forward'
     });
