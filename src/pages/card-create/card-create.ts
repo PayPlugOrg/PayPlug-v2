@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
 /**
- * Generated class for the RegisterCardReminderPage page.
+ * Generated class for the CardCreatePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,23 +11,23 @@ import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-register-card-reminder',
-  templateUrl: 'register-card-reminder.html',
+  selector: 'page-card-create',
+  templateUrl: 'card-create.html',
 })
-export class RegisterCardReminderPage {
+export class CardCreatePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterCardReminderPage');
+    console.log('ionViewDidLoad CardCreatePage');
   }
 
   next(page) {
     if(!page) {
       page = HomePage;
     }
-    this.navCtrl.push(page, {}, {
+    this.navCtrl.setRoot(page, {}, {
       animate: true,
       direction: 'forward'
     });

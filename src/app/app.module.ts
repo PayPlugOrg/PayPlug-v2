@@ -26,6 +26,8 @@ import { RegisterBusinessAddressPageModule } from '../pages/register-business-ad
 import { RegisterBusinessAddressPage } from '../pages/register-business-address/register-business-address';
 import { RegisterCardReminderPageModule } from '../pages/register-card-reminder/register-card-reminder.module';
 import { RegisterCardReminderPage } from '../pages/register-card-reminder/register-card-reminder';
+import { CardCreatePage } from '../pages/card-create/card-create';
+import { CardCreatePageModule } from '../pages/card-create/card-create.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -54,7 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterPhoneCheckPageModule,
     RegisterBusinessPageModule,
     RegisterBusinessAddressPageModule,
-    RegisterCardReminderPageModule
+    RegisterCardReminderPageModule,
+    CardCreatePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,7 +70,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterBusinessPage,
     RegisterBusinessAddressPage,
     RegisterPhonePage,
-    RegisterCardReminderPage
+    RegisterCardReminderPage,
+    CardCreatePage
   ],
   providers: [
     StatusBar,

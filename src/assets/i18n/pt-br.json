@@ -9,6 +9,7 @@
   "SIGNUP": "Cadastre-se",
 
   "TERMS_TOGGLE_ACCEPT":"li e concordo com os termos de uso",
+  "TERMS_BUTTON":"ler termos de uso",
 
   "TUTORIAL_SKIP_BUTTON": "Pular",
   "TUTORIAL_CONTINUE_BUTTON": "Continuar",
@@ -58,6 +59,8 @@
   "TUTORIAL_SLIDE3_DESCRIPTION": "Evite filas e dor de cabeça: com payplug você pode escolher comprar e pagar com antecedência fazendo uma transação segura, rápida e confortável.",
   
   "TUTORIAL_SLIDE4_TITLE": "Confira promoções em tempo real",
-  "TUTORIAL_SLIDE4_DESCRIPTION": "Saiba onde comprar e quais os descontos estão sendo oferecidos perto de você."
-
+  "TUTORIAL_SLIDE4_DESCRIPTION": "Saiba onde comprar e quais os descontos estão sendo oferecidos perto de você.",
+  
+  "CARD_CREATE_TITLE": "cadastre um cartão",
+  "CARD_CREATE_DESCRIPTION":"com ele você irá emitir seus pagamentos"
 }

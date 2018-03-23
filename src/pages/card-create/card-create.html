@@ -1,0 +1,80 @@
+<ion-header>
+
+  <ion-navbar transparent>
+    <ion-title>
+      <img height="40" src="assets/imgs/logo-azul.png">
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="my-component">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="col-12">
+        <ion-row>
+          <ion-col>
+            <h4 color=blue-payplug text-center ion-text text-uppercase>{{'CARD_CREATE_TITLE' | translate}}</h4>
+            <p color=blue-payplug ion-text text-uppercase text-center>{{'CARD_CREATE_DESCRIPTION' | translate}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-label color=blue-payplug ion-text text-uppercase floating>número do cartão</ion-label>
+              <ion-input color=blue-payplug ion-text name="card-number" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-label color=blue-payplug ion-text text-uppercase floating>nome no cartão</ion-label>
+              <ion-input color=blue-payplug ion-text name="card-name" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding transparent>
+              <ion-label color=blue-payplug ion-text text-uppercase floating>vencimento</ion-label>
+              <ion-input color=blue-payplug ion-text name="due" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item no-padding>
+              <ion-label color=blue-payplug ion-text text-uppercase floating>código de segurança</ion-label>
+              <ion-input color=blue-payplug ion-text name="security-code" type="celular"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer no-border>
+  <ion-navbar transparent>
+    <ion-buttons center>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button text-uppercase color=orange-payplug ion-button large full (click)="next()">
+                {{'OK' | translate}}
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-buttons>
+  </ion-navbar>
+</ion-footer>

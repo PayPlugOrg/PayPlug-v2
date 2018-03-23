@@ -24,7 +24,7 @@ export class LoginPage {
   }
 
   login() {
-    this.navCtrl.push(HomePage, { didLogin: 'savio' }, {
+    this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
       animate: true,
       direction: 'forward'
     })

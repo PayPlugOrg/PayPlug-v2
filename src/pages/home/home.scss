@@ -1,3 +1,20 @@
 page-home {
 
+    .my-footer {
+        background: #008db3;
+      }
+
+      .pay-maps {
+        background: url("../assets/imgs/maps.png") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+      }
+      .pay-merchan {
+        background: url("../assets/imgs/viapar.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 100% top;
+        background-attachment: fixed;
+      }
 }

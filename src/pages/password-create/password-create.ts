@@ -27,7 +27,7 @@ export class PasswordCreatePage {
   }
 
   createPassword() {
-    this.navCtrl.setRoot('RegisterCardReminderPage', {}, {
+    this.navCtrl.push('RegisterCardReminderPage', {}, {
       animate: true,
       direction: 'forward'
     });

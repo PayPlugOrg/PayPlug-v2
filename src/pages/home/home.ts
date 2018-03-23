@@ -24,4 +24,11 @@ export class HomePage {
     }
   }
 
+  logout() {
+    this.navCtrl.setRoot('LoginPage', {}, {
+      animate: true,
+      direction: 'back'
+    });
+  }
+
 }

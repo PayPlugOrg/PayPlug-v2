@@ -29,8 +29,13 @@
       <ion-col col-12>
         <ion-item no-lines>
           <ion-label ion-text color=light text-uppercase text-wrap>{{ 'TERMS_TOGGLE_ACCEPT' | translate}}</ion-label>
-          <ion-toggle value="foo" checked="true"></ion-toggle>
+          <ion-toggle color=orange-payplug value="foo" checked="true"></ion-toggle>
         </ion-item>
+      </ion-col>
+      <ion-col col-8 offset-2>
+        <button text-uppercase ion-button block color="blue-payplug" (click)="next('CardCreatePage')">
+          {{'TERMS_BUTTON' | translate}}
+        </button>
       </ion-col>
     </ion-row>
 
@@ -43,12 +48,14 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <button text-uppercase ion-button solid full large color="orange-payplug" (click)="registerPhone()">
+            <button no-margin text-uppercase ion-button solid full color="orange-payplug" (click)="next('CardCreatePage')">
               {{'REGISTER_NOW' | translate}}
             </button>
           </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col>
-            <button text-uppercase ion-button solid full large color="light" (click)="registerPhone()">
+            <button no-margin text-uppercase ion-button solid full color="light" (click)="next()">
               {{'OK' | translate}}
             </button>
           </ion-col>
