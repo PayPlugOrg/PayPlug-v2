@@ -30,7 +30,7 @@ export class BillingPage {
 
   open(page) {
     if(page == 'HomePage') {
-      this.navCtrl.setRoot(HomePage, {}, {
+      this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
         animate: true,
         direction: 'back'
       });

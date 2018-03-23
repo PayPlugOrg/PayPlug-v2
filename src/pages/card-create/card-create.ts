@@ -27,7 +27,7 @@ export class CardCreatePage {
     if(!page) {
       page = HomePage;
     }
-    this.navCtrl.setRoot(page, {}, {
+    this.navCtrl.setRoot(page, { didLogin: 'savio' }, {
       animate: true,
       direction: 'forward'
     });

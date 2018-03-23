@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.payplug.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>AppPayPlug2</name>
+    <name>PayPlug</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="saviocamacam@gmail.com" href="http://ionicframework.com/">Pay Plug</author>
     <content src="index.html" />
