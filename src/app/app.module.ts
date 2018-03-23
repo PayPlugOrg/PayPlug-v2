@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -28,6 +30,8 @@ import { RegisterCardReminderPageModule } from '../pages/register-card-reminder/
 import { RegisterCardReminderPage } from '../pages/register-card-reminder/register-card-reminder';
 import { CardCreatePage } from '../pages/card-create/card-create';
 import { CardCreatePageModule } from '../pages/card-create/card-create.module';
+import { BillingPageModule } from '../pages/billing/billing.module';
+import { BillingPage } from '../pages/billing/billing';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -48,6 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    NgxQRCodeModule,
     IonicModule.forRoot(MyApp),
     LandingPageModule,
     ResetPasswordPageModule,
@@ -57,7 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterBusinessPageModule,
     RegisterBusinessAddressPageModule,
     RegisterCardReminderPageModule,
-    CardCreatePageModule
+    CardCreatePageModule,
+    BillingPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +77,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterBusinessAddressPage,
     RegisterPhonePage,
     RegisterCardReminderPage,
-    CardCreatePage
+    CardCreatePage,
+    BillingPage
   ],
   providers: [
     StatusBar,

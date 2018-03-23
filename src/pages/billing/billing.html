@@ -12,36 +12,48 @@
 <ion-content no-padding>
   <ion-grid class="my-subheader">
     <ion-row>
-      <ion-col col-3 text-center>
-        <button ion-button [clear]=true icon-only block (click)="open('WalletPage')">
-          <img src="assets/imgs/menu-carteira.png" width="40">
-        </button>
-        <label for="" ion-text color=light>CARTEIRA</label>
-      </ion-col>
-      <ion-col col-3 text-center>
-        <label for="" ion-text color=light>Principal</label>
-      </ion-col>
-      <ion-col col-3 text-center>
-        <label for="" ion-text color=light>Disponível</label>
-      </ion-col>
-      <ion-col col-3 text-center>
-        <label for="" ion-text color=light>Saque</label>
+      <ion-col text-center>
+        <h3 no-margin ion-text color=blue-payplug>JORGE BADOTTI</h3>
+        <p no-margin ion-text color=blue-payplug>SOLICITAÇÃO DE PAGAMENTO</p>
       </ion-col>
     </ion-row>
   </ion-grid>
+
   <ion-grid>
+    <ion-row margin>
+      <ion-col col-8 offset-2>
+        <ion-card *ngIf="createdCode">
+          <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+          <!--<ion-card-content>
+                <p>Value: {{ createdCode }}</p>
+              </ion-card-content>-->
+        </ion-card>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item>
+          <ion-input [(ngModel)]="value" type="number" placeholder="Number Input with no label"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-list inset>
-        <button ion-item *ngFor="let item of items" (click)="open(item.component)">
-          <ion-avatar item-start>
-            <img [src]="item.icon">
-          </ion-avatar>
-          <h2 style="font-weight: bold;" text-uppercase ion-text color=blue-payplug>{{item.title}}</h2>
-          <h3 ion-text color=blue-payplug text-wrap>{{item.description}}</h3>
+        <button ion-item (click)="open('ProductCreate')" color="orange-payplug">
+          É UMA LOJA? CADASTRE UM PRODUTO AQUI
         </button>
       </ion-list>
     </ion-row>
+    <ion-row margin>
+      <ion-segment [(ngModel)]="action" color="blue-payplug">
+        <ion-segment-button value="friends" (ionSelect)="action()">
+          Compartilhar cobrança
+        </ion-segment-button>
+        <ion-segment-button value="enemies" (ionSelect)="action()">
+          Salvar para impressão
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
   </ion-grid>
+
 </ion-content>
 
 <ion-footer no-border>

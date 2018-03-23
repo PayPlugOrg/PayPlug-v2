@@ -24,6 +24,13 @@ export class HomePage {
     }
   }
 
+  open(page) {
+    this.navCtrl.push(page, {}, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
+
   logout() {
     this.navCtrl.setRoot('LoginPage', {}, {
       animate: true,

@@ -23,27 +23,31 @@
 </ion-header>
 
 <ion-content no-padding>
-  <ion-grid class="my-footer">
+  <ion-grid class="my-subheader">
     <ion-row>
-      <ion-col col-3>
+      <ion-col col-3 text-center>
         <button ion-button [clear]=true icon-only block>
           <img src="assets/imgs/menu-qrcode.png" width="40">
         </button>
+        <label for="" ion-text color=light>QR CODE</label>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-3 text-center>
         <button ion-button [clear]=true icon-only block>
           <img src="assets/imgs/menu-pagar.png" width="40">
         </button>
+        <label for="" ion-text color=light>PAGAR</label>
       </ion-col>
-      <ion-col col-3>
-        <button ion-button [clear]=true icon-only block>
+      <ion-col col-3 text-center>
+        <button ion-button [clear]=true icon-only block (click)="open('BillingPage')">
           <img src="assets/imgs/menu-cobrar.png" width="40">
         </button>
+        <label for="" ion-text color=light>COBRAR</label>
       </ion-col>
-      <ion-col col-3>
-        <button ion-button [clear]=true icon-only block>
+      <ion-col col-3 text-center>
+        <button ion-button [clear]=true icon-only block (click)="open('WalletPage')">
           <img src="assets/imgs/menu-carteira.png" width="40">
         </button>
+        <label for="" ion-text color=light>CARTEIRA</label>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -108,7 +112,7 @@
     <br>
     <br>
   </ion-grid>
-  
+
 </ion-content>
 
 <ion-footer no-border>
