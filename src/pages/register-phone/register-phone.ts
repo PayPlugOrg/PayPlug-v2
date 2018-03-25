@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the RegisterPhonePage page.
@@ -16,11 +17,23 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RegisterPhonePage {
 
+  form: FormGroup;
+  isReady: boolean;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public translate: TranslateService,
+    public formBuilder: FormBuilder
   ) {
+    this.form = formBuilder.group({
+      phone: ['', Validators.required]
+    });
+    this.form.valueChanges.subscribe((v) => {
+      console.log(v);
+      console.log(this.form.valid);
+      this.isReady = this.form.valid;
+    });
   }
 
   ionViewDidLoad() {

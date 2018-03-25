@@ -10,38 +10,41 @@
 <ion-content padding class="my-component">
 
   <ion-grid>
-    <ion-row>
-      <ion-col class="col-12">
-        <ion-row>
-          <ion-col>
-            <h3 color=blue-payplug text-center ion-text text-uppercase>bem-vindo ao payplug</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item no-padding color=background-pay>
-              <ion-label ion-text color=blue-payplug text-uppercase floating>email ou cpf</ion-label>
-              <ion-input name="username" type="text"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item no-padding color=background-pay>
-              <ion-label ion-text color=blue-payplug text-uppercase floating>senha</ion-label>
-              <ion-input name="password" type="password"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-8 offset-2>
-        <button text-uppercase color=orange-payplug ion-button block (click)="login()">
-          entrar
-        </button>
-      </ion-col>
-    </ion-row>
+    <form (submit)="login()" [formGroup]="form">
+      <ion-row>
+        <ion-col class="col-12">
+          <ion-row>
+            <ion-col>
+              <h3 color=blue-payplug text-center ion-text text-uppercase>bem-vindo ao payplug</h3>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding color=background-pay>
+                <ion-label ion-text color=blue-payplug text-uppercase floating>email ou cpf</ion-label>
+                <ion-input name="username" type="text" formControlName="username"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding color=background-pay>
+                <ion-label ion-text color=blue-payplug text-uppercase floating>senha</ion-label>
+                <ion-input name="password" type="password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-8 offset-2>
+          <button text-uppercase color=orange-payplug ion-button block type="submit">
+            entrar
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+
     <ion-row>
       <ion-col col-8 offset-2>
         <button text-uppercase color=blue-payplug ion-button block (click)="register()">

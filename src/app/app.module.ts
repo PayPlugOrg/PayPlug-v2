@@ -14,6 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { LandingPage } from '../pages/landing/landing';
 import { LandingPageModule } from '../pages/landing/landing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { ResetPasswordPageModule } from '../pages/reset-password/reset-password.module';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { RegisterPhonePage } from '../pages/register-phone/register-phone';
@@ -32,6 +33,8 @@ import { CardCreatePage } from '../pages/card-create/card-create';
 import { CardCreatePageModule } from '../pages/card-create/card-create.module';
 import { BillingPageModule } from '../pages/billing/billing.module';
 import { BillingPage } from '../pages/billing/billing';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -45,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -83,7 +87,9 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthServiceProvider,
+    AlertServiceProvider
   ]
 })
 export class AppModule { }

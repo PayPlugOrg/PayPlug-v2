@@ -8,45 +8,37 @@
 
 
 <ion-content padding class="my-component">
-  <ion-grid>
-    <ion-row>
-      <ion-col class="col-12">
-        <ion-row>
-          <ion-col>
-            <h4 color=blue-payplug text-center ion-text text-uppercase>{{'REGISTER_PHONE_CHECK_TITLE' | translate}}</h4>
-            <p color=blue-payplug ion-text text-uppercase text-center>{{'REGISTER_PHONE_CHECK_DESCRIPTION' | translate}}</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item no-padding color=background-pay>
-              <ion-label color=blue-payplug ion-text text-uppercase floating>{{'REGISTER_PHONE_CHECK_PLACEHOLDER' | translate}}</ion-label>
-              <ion-input name="code" type="telefone"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <form (submit)="confirm()" [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col-12">
+          <ion-row>
+            <ion-col>
+              <h4 color=blue-payplug text-center ion-text text-uppercase>{{'REGISTER_PHONE_CHECK_TITLE' | translate}}</h4>
+              <p color=blue-payplug ion-text text-uppercase text-center>{{'REGISTER_PHONE_CHECK_DESCRIPTION' | translate}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-padding color=background-pay>
+                <ion-label color=blue-payplug ion-text text-uppercase floating>{{'REGISTER_PHONE_CHECK_PLACEHOLDER' | translate}}</ion-label>
+                <ion-input name="code" type="telefone" formControlName="code"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button text-uppercase color=blue-payplug ion-button large full (click)="reSendSms()">
+            {{'REGISTER_PHONE_CHECK_RESEND' | translate}}
+          </button>
+          <button text-uppercase color=orange-payplug ion-button large full type="submit" [disabled]="!isReady">
+            {{'OK' | translate}}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 </ion-content>
-
-<ion-footer no-border>
-  <ion-navbar transparent>
-    <ion-buttons center>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <button text-uppercase color=blue-payplug ion-button large full (click)="reSendSms()">
-              {{'REGISTER_PHONE_CHECK_RESEND' | translate}}
-            </button>
-            <button text-uppercase color=orange-payplug ion-button large full (click)="confirm()">
-              {{'OK' | translate}}
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-    </ion-buttons>
-  </ion-navbar>
-</ion-footer>

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AlertServiceProvider } from '../../providers/alert-service/alert-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,7 +19,20 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  form: FormGroup;
+  isReady: boolean;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public alertService: AlertServiceProvider,
+    public authService: AuthServiceProvider,
+    public formBuilder: FormBuilder
+  ) {
+    this.form = formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
 
   ionViewDidLoad() {
@@ -24,10 +40,24 @@ export class LoginPage {
   }
 
   login() {
-    this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
-      animate: true,
-      direction: 'forward'
-    })
+    this.alertService.showLoader('Validando acesso...');
+    this.authService.login(this.form.value).then((result) => {
+      this.alertService.loading.dismiss();
+      var data = result;
+      if (data) {
+        console.log(data);
+        //localStorage.setItem('token', data.Token);
+        localStorage.setItem('login', this.form.value['username']);
+        this.authService.getUserData();
+        this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
+          animate: true,
+          direction: 'forward'
+        })
+      }
+    }, (err) => {
+      this.alertService.loading.dismiss();
+      this.alertService.presentToast(err);
+    });
   }
 
   register() {
