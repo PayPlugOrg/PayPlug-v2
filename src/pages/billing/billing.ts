@@ -19,6 +19,7 @@ export class BillingPage {
   private value = "";
   private origem = "06531328592"
   private createdCode = "https://www.payplug.org:88/Lkn/Ctnr?o=" + this.origem + "&d=&v=" + this.value;
+  username = localStorage.getItem('username');
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
