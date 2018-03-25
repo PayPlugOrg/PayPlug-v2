@@ -11,7 +11,7 @@ import { AlertServiceProvider } from '../alert-service/alert-service';
 @Injectable()
 export class AuthServiceProvider {
 
-  apiUrl = 'api';//'api'; http://aplweb.tsemredes.com.br:84/v1';
+  apiUrl = 'api';//'api'; http://177.52.170.238:84/v1';
   userInfo: any;
 
   constructor(
