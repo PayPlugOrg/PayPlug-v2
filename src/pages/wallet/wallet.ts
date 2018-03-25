@@ -37,7 +37,7 @@ export class WalletPage {
 
   open(page) {
     if(page == 'HomePage') {
-      this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
+      this.navCtrl.setRoot(HomePage, { }, {
         animate: true,
         direction: 'back'
       });

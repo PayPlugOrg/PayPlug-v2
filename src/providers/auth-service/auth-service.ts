@@ -22,11 +22,12 @@ export class AuthServiceProvider {
   }
 
   login(user) {
+    console.log(user['username'] + user['password']);
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post(this.apiUrl + '/Tokens/New?email=' + user['nome'] + '&dataFormat=json&password=' + user['senha'] + '&duration=200', null, { headers: headers })
+      this.http.post(this.apiUrl + '/Tokens/New?email=' + user['username'] + '&dataFormat=json&password=' + user['password'] + '&duration=200', null, { headers: headers })
         .subscribe(res => {
           if (res.json()) {
             resolve(res.json());

@@ -26,12 +26,12 @@ export class RegisterCardReminderPage {
   next(page) {
     if (!page) {
       page = HomePage;
-      this.navCtrl.setRoot(page, { didLogin: 'savio' }, {
+      this.navCtrl.setRoot(page, {}, {
         animate: true,
         direction: 'forward'
       });
     } else {
-      this.navCtrl.push(page, { didLogin: 'savio' }, {
+      this.navCtrl.push(page, {}, {
         animate: true,
         direction: 'forward'
       });

@@ -30,8 +30,6 @@ export class RegisterPhonePage {
       phone: ['', Validators.required]
     });
     this.form.valueChanges.subscribe((v) => {
-      console.log(v);
-      console.log(this.form.valid);
       this.isReady = this.form.valid;
     });
   }

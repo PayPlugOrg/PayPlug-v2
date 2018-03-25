@@ -45,11 +45,11 @@ export class LoginPage {
       this.alertService.loading.dismiss();
       var data = result;
       if (data) {
-        console.log(data);
-        //localStorage.setItem('token', data.Token);
+        console.log(data['Token']);
+        localStorage.setItem('token', data['Token']);
         localStorage.setItem('login', this.form.value['username']);
         this.authService.getUserData();
-        this.navCtrl.setRoot(HomePage, { didLogin: 'savio' }, {
+        this.navCtrl.setRoot(HomePage, { }, {
           animate: true,
           direction: 'forward'
         })

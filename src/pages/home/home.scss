@@ -15,4 +15,12 @@ page-home {
         background-position: 100% top;
         background-attachment: fixed;
       }
+
+      .subheader-user {
+        background: color($colors, blue-payplug, base);
+      }
+
+      .home-label {
+        font-size: 0.8rem;
+      }
 }
