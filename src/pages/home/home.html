@@ -34,11 +34,13 @@
         </ion-item>
       </ion-col>
       <ion-col col-3 no-padding text-center>
-        <p class="home-label" no-margin ion-text color=light>CARTÃO <br> PRINCIPAL</p>
+        <p class="home-label" no-margin ion-text color=light>CARTÃO
+          <br> PRINCIPAL</p>
         <h6 no-margin ion-text color=light>R${{saldoTotal}}</h6>
       </ion-col>
       <ion-col col-3 no-padding text-center>
-        <p class="home-label" no-margin ion-text color=light>DISPONÍVEL <br> SAQUE</p>
+        <p class="home-label" no-margin ion-text color=light>DISPONÍVEL
+          <br> SAQUE</p>
         <h6 no-margin ion-text color=light>R${{saldoSaque}}</h6>
       </ion-col>
     </ion-row>
@@ -53,7 +55,7 @@
         <label for="" ion-text color=light>QR CODE</label>
       </ion-col>
       <ion-col col-3 text-center>
-        <button ion-button [clear]=true icon-only block>
+        <button ion-button [clear]=true icon-only block (click)="open('PaymentAuthorizationPage')">
           <img src="assets/imgs/menu-pagar.png" width="40">
         </button>
         <label for="" ion-text color=light>PAGAR</label>
@@ -86,7 +88,7 @@
         </button>
       </ion-col>
       <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
+        <button ion-button color=danger icon-only block outline (click)="open('PaymentAuthorizationPage')">
           <img src="assets/imgs/apps-cartoes.png" width="40">
         </button>
       </ion-col>
@@ -112,15 +114,15 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid class="pay-maps">
+  <ion-grid class="bg-img">
     <ion-row>
       <ion-col col-8 offset-2>
-        <p ion-text text-color=light text-center>Encontre estabelecimentos perto de você para comprar com o seu aplicativo</p>
+        <p ion-text color=light text-center>Encontre estabelecimentos perto de você para comprar com o seu aplicativo</p>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-6 offset-3>
-        <button block ion-button [outline]=true outline color=danger>Faça um tour</button>
+      <ion-col col-8 offset-2>
+        <button block ion-button [outline]=true large outline color=light text-uppercase>Faça um tour</button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -135,26 +137,39 @@
     <ion-buttons center>
       <ion-grid>
         <ion-row justify-content-center>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="home"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="pricetags"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="settings"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="swap"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline (click)="logout()">
-            <ion-icon name="log-out"></ion-icon>
-          </button>
+          <ion-col col-auto no-padding text-center>
+            <button color=light ion-button icon-only outline>
+              <ion-icon name="home"></ion-icon>
+            </button>
+            <p class="home-label" no-margin ion-text color=light>HOME</p>
+          </ion-col>
+          <ion-col col-auto no-padding text-center>
+            <button color=light ion-button icon-only outline>
+              <ion-icon name="pricetags"></ion-icon>
+            </button>
+            <p class="home-label" no-margin ion-text color=light>CUPONS</p>
+          </ion-col>
+          
+          <ion-col col-auto no-padding text-center>
+            <button color=light ion-button icon-only outline>
+              <ion-icon name="settings"></ion-icon>
+            </button>
+            <p class="home-label" no-margin ion-text color=light>AJUSTES</p>
+          </ion-col>
+          
+          <ion-col col-auto no-padding text-center>
+            <button color=light ion-button icon-only outline>
+              <ion-icon name="swap"></ion-icon>
+            </button>
+            <p class="home-label" no-margin ion-text color=light>MUDAR <br> CONTA</p>
+          </ion-col>
+          
+          <ion-col col-auto no-padding text-center>
+            <button color=light ion-button icon-only outline (click)="logout()">
+              <ion-icon name="log-out"></ion-icon>
+            </button>
+            <p class="home-label" no-margin ion-text color=light>SAIR</p>
+          </ion-col>
         </ion-row>
       </ion-grid>
 

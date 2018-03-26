@@ -36,6 +36,20 @@ import { BillingPage } from '../pages/billing/billing';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { CardManagementPageModule } from '../pages/card-management/card-management.module';
+import { CardManagementPage } from '../pages/card-management/card-management';
+import { CardProvider } from '../providers/card/card';
+import { CardPageModule } from '../pages/card/card.module';
+import { CardPage } from '../pages/card/card';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BillingIdentificationPageModule } from '../pages/billing-identification/billing-identification.module';
+import { BillingIdentificationPage } from '../pages/billing-identification/billing-identification';
+import { BillingAuthorizationPage } from '../pages/billing-authorization/billing-authorization';
+import { BillingAuthorizationPageModule } from '../pages/billing-authorization/billing-authorization.module';
+import { CardNewPage } from '../pages/card-new/card-new';
+import { CardNewPageModule } from '../pages/card-new/card-new.module';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -67,7 +81,12 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterBusinessAddressPageModule,
     RegisterCardReminderPageModule,
     CardCreatePageModule,
-    BillingPageModule
+    BillingPageModule,
+    CardManagementPageModule,
+    CardPageModule,
+    BillingIdentificationPageModule,
+    BillingAuthorizationPageModule,
+    CardNewPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -82,14 +101,22 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterPhonePage,
     RegisterCardReminderPage,
     CardCreatePage,
-    BillingPage
+    BillingPage,
+    CardManagementPage,
+    CardPage,
+    BillingIdentificationPage,
+    BillingAuthorizationPage,
+    CardNewPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthServiceProvider,
-    AlertServiceProvider
+    AlertServiceProvider,
+    SocialSharing,
+    CardProvider,
+    BarcodeScanner,
   ]
 })
 export class AppModule { }

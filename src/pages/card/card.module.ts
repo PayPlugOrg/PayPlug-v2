@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { BillingPage } from './billing';
+import { CardPage } from './card';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-import StringMask from 'string-mask';
 
 @NgModule({
   declarations: [
-    BillingPage,
+    CardPage,
   ],
   imports: [
-    IonicPageModule.forChild(BillingPage),
+    IonicPageModule.forChild(CardPage),
     NgxQRCodeModule,
   ],
 })
-export class BillingPageModule {}
+export class CardPageModule {}

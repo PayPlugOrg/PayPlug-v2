@@ -44,14 +44,22 @@ export class HomePage {
   }
 
   open(page) {
-    this.navCtrl.push(page, {}, {
+    var params = {}
+    if (page == 'PaymentAuthorizationPage') {
+      params = {
+        message: 'Informe a senha de liberação para ter acesso aos seus cartões',
+        label: 'Senha de Liberação',
+        page: 'CardManagementPage'
+      };
+    }
+    this.navCtrl.push(page, params, {
       animate: true,
       direction: 'forward'
     });
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('token');
     this.navCtrl.setRoot('LoginPage', {}, {
       animate: true,
       direction: 'back'

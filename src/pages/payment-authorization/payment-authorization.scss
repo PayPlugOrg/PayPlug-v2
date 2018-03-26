@@ -1,0 +1,24 @@
+page-payment-authorization {
+    .button-icons {
+        .button {
+            font-size: 3em; //Preferred size here
+        }
+    }
+
+    .botao-numero {
+        width: 18%;
+    }
+
+    .item-md, .item-ios {
+        padding-left: 0px;
+    }
+
+    .text-input[disabled] {
+        opacity: 1;
+        font-size: 1.6em;
+    }
+
+    .my-subheader {
+        background: #d9dade;
+    }
+}

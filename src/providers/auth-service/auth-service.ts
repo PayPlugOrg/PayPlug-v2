@@ -40,6 +40,22 @@ export class AuthServiceProvider {
     });
   }
 
+  paymentAuthenticate(password: string) {
+
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      var consulta = this.apiUrl + '/Users/ValidarSenhaLiberacao?token=' + localStorage.getItem('token') + '&password=' + password + '&dataFormat=json';
+
+      this.http.post(consulta, null, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        })
+    })
+  }
+
   getUserInfo(userInfo = localStorage.getItem('login')) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
@@ -97,6 +113,46 @@ export class AuthServiceProvider {
       }
     });
     return user1;
+  }
+
+  doBilling(idCartao, billingValue, password, source?) {
+
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      if (!source)
+        source = localStorage.getItem('login');
+
+      var consulta = this.apiUrl + '/Cartao/CobrarComCartao?token=' + localStorage.getItem('token') + '&idCartao=' + idCartao + '&valor=' + billingValue + '&IdUsuarioOrigem=' + source + '&dataFormat=json' + '&senha=' + password;
+
+      this.http.post(consulta, null, { headers: headers })
+        .subscribe(res => {
+
+          resolve(res.json());
+        }, (err) => {
+
+          reject(err);
+        });
+    });
+  }
+
+  doTransfer(idTo, value, password) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      var consulta = this.apiUrl + '/Transactions/Save?token=' + localStorage.getItem('token') + '&idFrom=' + localStorage.getItem('login') + '&idTo=' + idTo + '&idType=3' + '&value=' + value + '&liberationPassword=' + password + '&dataFormat=json';
+
+
+      this.http.post(consulta, null, { headers: headers })
+        .subscribe(res => {
+
+          resolve(res.json());
+        }, (err) => {
+
+          reject(err);
+        });
+    });
   }
 
   logout() {

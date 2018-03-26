@@ -1,0 +1,55 @@
+<ion-header>
+
+    <ion-navbar color=blue-payplug>
+      <ion-title>
+        <img height="40" src="assets/imgs/logo-branco.png">
+      </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content no-padding>
+  <ion-grid class="my-subheader">
+    <ion-row>
+      <ion-col text-center text-uppercase>
+        <p no-margin ion-text color=blue-payplug>AUTORIZAÇÃO DE PAGAMENTO</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center col-12>{{message}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item class="item-content">
+          <ion-label text-center stacked>{{label}}</ion-label>
+          <ion-input text-center [(ngModel)]=password type=password disabled></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row align-items-center>
+      <ion-col col-12>
+        <button class="botao-numero" no-lines ion-button *ngFor="let n of numbers" color="payplug" outline (click)=pressedButton(n.value)>
+          {{n.value}}
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button block color="danger" navPop>Cancelar</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button block color="primary" (click)="clearPasswordInput()">Limpar</button>
+      </ion-col>
+      <ion-col col-12>
+        <button ion-button block color="secondary" (click)="authenticate()">Avançar</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

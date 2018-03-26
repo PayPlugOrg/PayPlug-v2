@@ -23,7 +23,7 @@ export class LoginPage {
   isReady: boolean;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public alertService: AlertServiceProvider,
     public authService: AuthServiceProvider,
@@ -32,7 +32,8 @@ export class LoginPage {
     this.form = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
+    this.form.controls['username'].setValue(localStorage.getItem('login'));
   }
 
   ionViewDidLoad() {
@@ -49,7 +50,7 @@ export class LoginPage {
         localStorage.setItem('token', data['Token']);
         localStorage.setItem('login', this.form.value['username']);
         this.authService.getUserData();
-        this.navCtrl.setRoot(HomePage, { }, {
+        this.navCtrl.setRoot(HomePage, {}, {
           animate: true,
           direction: 'forward'
         })
