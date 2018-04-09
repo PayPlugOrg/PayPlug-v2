@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Sim } from '@ionic-native/sim';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { AlertServiceProvider } from '../../providers/alert-service/alert-service';
 
 /**
  * Generated class for the RegisterPhonePage page.
@@ -21,10 +24,14 @@ export class RegisterPhonePage {
   isReady: boolean;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public translate: TranslateService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public platform: Platform,
+    private sim: Sim,
+    private authService: AuthServiceProvider,
+    public alertService: AlertServiceProvider
   ) {
     this.form = formBuilder.group({
       phone: ['', Validators.required]
@@ -39,10 +46,44 @@ export class RegisterPhonePage {
   }
 
   sendSms() {
-    this.navCtrl.push('RegisterPhoneCheckPage', {}, {
-      animate: true,
-      direction: 'forward'
-    });
+    if (this.platform.is('cordova')) {
+      this.sim.requestReadPermission().then(() => {
+        console.log('Permission granted');
+
+        this.sim.getSimInfo().then((info) => {
+          console.log('Sim info: ', info);
+
+          this.authService.phoneCheck({ info: info, number: this.form.value }).then((res) => {
+            console.log(res);
+            if (res['Message'] == 'OK') {
+              this.navCtrl.push('RegisterPhoneCheckPage', {}, {
+                animate: true,
+                direction: 'forward'
+              });
+            } else {
+              let alert = this.alertService.alertCtrl.create({
+                title: 'Erro',
+                message: 'Algum erro no servidor está impedindo o prosseguimento.',
+                buttons: ['OK']
+              });
+              alert.present();
+            }
+          })
+
+
+        }, (err) => {
+          console.log('Unable to get sim info: ', err);
+          let alert = this.alertService.alertCtrl.create({
+            title: 'Acesso de negado',
+            message: 'Devido a negativa de acesso às informações do SIM, não será possível prosseguir com a instalação do aplicativo.',
+            buttons: ['OK']
+          });
+          alert.present();
+        });
+      }, () => {
+        console.log('Permission denied');
+      });
+    }
   }
 
 }

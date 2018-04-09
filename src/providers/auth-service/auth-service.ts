@@ -11,7 +11,7 @@ import { AlertServiceProvider } from '../alert-service/alert-service';
 @Injectable()
 export class AuthServiceProvider {
 
-  apiUrl = 'api';//'api'; http://177.52.170.238:84/v1';
+  apiUrl = 'http://177.52.170.238:84/v1';//'api'; http://177.52.170.238:84/v1';
   userInfo: any;
 
   constructor(
@@ -143,6 +143,72 @@ export class AuthServiceProvider {
 
       var consulta = this.apiUrl + '/Transactions/Save?token=' + localStorage.getItem('token') + '&idFrom=' + localStorage.getItem('login') + '&idTo=' + idTo + '&idType=3' + '&value=' + value + '&liberationPassword=' + password + '&dataFormat=json';
 
+
+      this.http.post(consulta, null, { headers: headers })
+        .subscribe(res => {
+
+          resolve(res.json());
+        }, (err) => {
+
+          reject(err);
+        });
+    });
+  }
+
+  phoneCheck(simInfo) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      var consulta = this.apiUrl
+        + '/Users/SavePreCadastro?'
+        +'id_device=' + simInfo['deviceId']
+        + '&celular=' + simInfo['phoneNumber']
+        + '&sim_serial=' + simInfo['simSerialNumber']
+        + '&sim_operador=' + simInfo['mcc']
+        + '&sim_country_isocoe=' + simInfo['countryCode']
+        + '&lac=' + simInfo['mcc']
+        + '&cell_id=' + simInfo['mnc']
+        + '&ntw_iso_code=' + simInfo['countryCode']
+        + '&ntw_operador=' + simInfo['mcc']
+        + '&ntw_operador_nome=' + simInfo['carrierName']
+        + '&latitude=' 
+        + '&longitude=' 
+        + '&current_address=' 
+        + '&dataFormat=json';
+
+      this.http.post(consulta, null, { headers: headers })
+        .subscribe(res => {
+
+          resolve(res.json());
+        }, (err) => {
+
+          reject(err);
+        });
+    });
+  }
+
+  phoneCheckCode(codeInfo) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      var consulta = this.apiUrl
+        + '/Users/SavePreCadastro?'
+        +'id_device=' + codeInfo['deviceId']
+        + '&celular=' + codeInfo['phoneNumber']
+        + '&sim_serial=' + codeInfo['simSerialNumber']
+        + '&sim_operador=' + codeInfo['mcc']
+        + '&sim_country_isocoe=' + codeInfo['countryCode']
+        + '&lac=' + codeInfo['mcc']
+        + '&cell_id=' + codeInfo['mnc']
+        + '&ntw_iso_code=' + codeInfo['countryCode']
+        + '&ntw_operador=' + codeInfo['mcc']
+        + '&ntw_operador_nome=' + codeInfo['carrierName']
+        + '&latitude=' 
+        + '&longitude=' 
+        + '&current_address=' 
+        + '&dataFormat=json';
 
       this.http.post(consulta, null, { headers: headers })
         .subscribe(res => {
