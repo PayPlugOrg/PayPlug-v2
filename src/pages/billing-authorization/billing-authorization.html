@@ -11,14 +11,14 @@
     <ion-grid>
   
       <ion-row>
-        <ion-col *ngIf="operation != 'Transferência'" col-4 text-center>
+        <!-- <ion-col *ngIf="operation != 'Transferência'" col-4 text-center>
           <h5>Parcelas</h5>
           <button ion-button color="light" outline (click)=showRadio()>{{parcela}}</button>
-        </ion-col>
+        </ion-col> -->
         <ion-col *ngIf="operation == 'Transferência'" col-12 text-center>
           <h1>R$ {{showBillingValue}}</h1>
         </ion-col>
-        <ion-col *ngIf="operation != 'Transferência'" col-8 text-center>
+        <ion-col *ngIf="operation != 'Transferência'" col-12 text-center>
           <h1>R$ {{showBillingValue}}</h1>
         </ion-col>
       </ion-row>
@@ -37,7 +37,7 @@
         
         <ion-row *ngIf="operation != 'Transferência'">
   
-          <ion-slides pager (ionSlideDidChange)="changePasswordLabel()" (ionSlideReachEnd)="newCardModal()">
+          <ion-slides pager (ionSlideDidChange)="changePasswordLabel()">
             <ion-slide *ngFor="let card of cards">
               <img [src]="card['mediaUrl']">
               <p>{{card.bandeira}} {{card.numero}} <br> {{card.tipoCartao}}</p>

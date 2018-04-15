@@ -50,6 +50,7 @@ import { BillingAuthorizationPageModule } from '../pages/billing-authorization/b
 import { CardNewPage } from '../pages/card-new/card-new';
 import { CardNewPageModule } from '../pages/card-new/card-new.module';
 import { Sim } from '@ionic-native/sim';
+import { File } from '@ionic-native/file';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -118,7 +119,8 @@ export function createTranslateLoader(http: HttpClient) {
     SocialSharing,
     CardProvider,
     BarcodeScanner,
-    Sim
+    Sim,
+    File
   ]
 })
 export class AppModule { }

@@ -54,8 +54,8 @@ export class RegisterPhonePage {
           console.log('Sim info: ', info);
 
           this.authService.phoneCheck({ info: info, number: this.form.value }).then((res) => {
-            console.log(res);
-            if (res['Message'] == 'OK') {
+            console.log('res' + res);
+            if (res['Success']) {
               this.navCtrl.push('RegisterPhoneCheckPage', {}, {
                 animate: true,
                 direction: 'forward'

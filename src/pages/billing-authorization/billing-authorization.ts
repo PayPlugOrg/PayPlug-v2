@@ -72,23 +72,21 @@ export class BillingAuthorizationPage {
     console.log(this.information);
 
     this.showBillingValue = navParams.get('billingValue');
-    this.rawBillingValue = navParams.get('rawBillingValue');
+    this.rawBillingValue = navParams.get('rawValue');
 
     //Verifica se procedimento de cobrança vem com a entrada manual da identificação do usuário
-    if (navParams.get('openModalIdentification')) {
-      console.log('aqui??');
-      //this.displayIdentificationModal();
-      this.operation = this.navParams.get('operation');
-    }
+      
+    this.operation = this.navParams.get('operation');
+    
     //Ou se vem da captura de informação do cartão
-    else if (navParams.get('payplugCard')) {
+    if (navParams.get('payplugCard')) {
       this.getUserInfoByCard(navParams.get('payplugCard'));
     }
     this.clearPasswordInput();
   }
 
   ionViewWillEnter() {
-
+    this.getCards();
     if (this.navParams.get('userInfo')) {
       this.information = this.navParams.get('userInfo');
       this.operation = this.navParams.get('operation');
@@ -129,14 +127,6 @@ export class BillingAuthorizationPage {
 
       this.cards = result;
       this.billedId = this.cards[0]['idUsuario'];
-
-      var newCard = {
-        mediaUrl: "assets/imgs/credit-card.png",
-        numero: "",
-        tipoCartao: "Novo Cartão"
-      }
-      this.cards.push(newCard);
-
     });
 
 
@@ -265,13 +255,13 @@ export class BillingAuthorizationPage {
       }
     } else if (internet) {
       this.authProvider.doBilling(cartao['idCartao'], billingValue, this.password).then((result) => {
-
+        console.log(result);
         //result['Message'] = 'Ok';
 
-        if (result['Message'] == 'Ok') {
+        if (result['Success']) {
           //this.navCtrl.push(ReceiptPage, {identifier:result['Identifier']});
           this.alertProv.showLoader('Preparando recibo...');
-          let receiptModal = this.modalCtrl.create(ReceiptPage, { identifier: result['Identifier'] }); //result['Identifier'] '5510'
+          let receiptModal = this.modalCtrl.create('ReceiptPage', { identifier: result['Identifier'] }); //result['Identifier'] '5510'
           receiptModal.onDidDismiss(() => {
             this.navCtrl.popToRoot();
           })

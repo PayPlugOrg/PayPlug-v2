@@ -44,16 +44,16 @@ export class BillingPage {
   onInputTime(ev: any) {
     var reg = /[0-9]+/gi;
     if (ev.length <= 16) {
-      console.log(ev);
+     // console.log(ev);
       this.rawValue = ev.replace(/(R\$ )|(\.)|(,)/gi, '');
       
       if (reg.test(this.rawValue)) {
-        console.log(this.rawValue);
+        //console.log(this.rawValue);
         this.createdCode = "https://www.payplug.org:88/Lkn/Ctnr?o=" + this.origem + "&d=&v=";
         this.createdCode = this.createdCode + this.rawValue;
       }
       var formattedValue = this.formatter.apply(this.rawValue);
-      console.log(formattedValue);
+      //console.log(formattedValue);
       this.valor = "R$ " + formattedValue;
     }
   }
@@ -82,13 +82,14 @@ export class BillingPage {
   }
 
   send() {
-    this.navCtrl.push('BillingIdentificationPage', {rawValue: this.rawValue}, {
+    this.navCtrl.push('BillingIdentificationPage', {rawValue: this.rawValue, operation: 'Cobrança'}, {
       animate: true,
       direction: 'forward'
     });
   }
 
-  action(execute) {
+  actionTrigger(execute) {
+    console.log(execute);
     if (execute == 'share') {
       this.socialSharing.share(this.createdCode);
     }

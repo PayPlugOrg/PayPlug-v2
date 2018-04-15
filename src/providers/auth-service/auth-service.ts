@@ -156,27 +156,28 @@ export class AuthServiceProvider {
   }
 
   phoneCheck(simInfo) {
+    console.log(simInfo);
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
       var consulta = this.apiUrl
         + '/Users/SavePreCadastro?'
-        +'id_device=' + simInfo['deviceId']
-        + '&celular=' + simInfo['phoneNumber']
-        + '&sim_serial=' + simInfo['simSerialNumber']
-        + '&sim_operador=' + simInfo['mcc']
-        + '&sim_country_isocoe=' + simInfo['countryCode']
-        + '&lac=' + simInfo['mcc']
-        + '&cell_id=' + simInfo['mnc']
-        + '&ntw_iso_code=' + simInfo['countryCode']
-        + '&ntw_operador=' + simInfo['mcc']
-        + '&ntw_operador_nome=' + simInfo['carrierName']
+        +'id_device=' + simInfo.info['deviceId']
+        + '&celular=' + simInfo.number['phone']
+        + '&sim_serial=' + simInfo.info['simSerialNumber']
+        + '&sim_operador=' + simInfo.info['mcc']
+        + '&sim_country_isocoe=' + simInfo.info['countryCode']
+        + '&lac=' + simInfo.info['mcc']
+        + '&cell_id=' + simInfo.info['mnc']
+        + '&ntw_iso_code=' + simInfo.info['countryCode']
+        + '&ntw_operador=' + simInfo.info['mcc']
+        + '&ntw_operador_nome=' + simInfo.info['carrierName']
         + '&latitude=' 
         + '&longitude=' 
         + '&current_address=' 
         + '&dataFormat=json';
-
+      console.log(consulta);
       this.http.post(consulta, null, { headers: headers })
         .subscribe(res => {
 
@@ -223,6 +224,30 @@ export class AuthServiceProvider {
 
   logout() {
 
+  }
+
+  getReceipt(identifier) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      var consulta = this.apiUrl + '/Comprovante/GerarComprovante?token=' + localStorage.getItem('token') + '&Identifier=' + identifier + '&desc=pagamentoviaappionic&dataFormat=json';
+
+      this.http.post(consulta, null, { headers: headers })
+        .subscribe(res => {
+
+          resolve(res.json());
+        }, (err) => {
+
+          let alert = this.alertService.alertCtrl.create({
+            title: 'Erro!',
+            subTitle: err,
+            buttons: ['OK']
+          });
+          alert.present();
+          reject(err);
+        });
+    });
   }
 
 }
