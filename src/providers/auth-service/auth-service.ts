@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+
+import { HTTP } from '@ionic-native/http';
 import { AlertServiceProvider } from '../alert-service/alert-service';
 
 /*
@@ -15,7 +16,7 @@ export class AuthServiceProvider {
   userInfo: any;
 
   constructor(
-    public http: Http,
+    public http: HTTP,
     public alertService: AlertServiceProvider
   ) {
     console.log('Hello AuthServiceProvider Provider');
@@ -24,13 +25,12 @@ export class AuthServiceProvider {
   login(user) {
     console.log(user['username'] + user['password']);
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
 
-      this.http.post(this.apiUrl + '/Tokens/New?email=' + user['username'] + '&dataFormat=json&password=' + user['password'] + '&duration=200', null, { headers: headers })
-        .subscribe(res => {
-          if (res.json()) {
-            resolve(res.json());
+      this.http.post(this.apiUrl + '/Tokens/New?email=' + user['username'] + '&dataFormat=json&password=' + user['password'] + '&duration=200', {}, {})
+        .then(res => {
+          console.log(res.data.json());
+          if (res.data.json()) {
+            resolve(res.data.json());
           } else {
             reject("Erro ao fazer login. Usuário não encontrado ou senha incorreta");
           }
@@ -43,13 +43,12 @@ export class AuthServiceProvider {
   paymentAuthenticate(password: string) {
 
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
       var consulta = this.apiUrl + '/Users/ValidarSenhaLiberacao?token=' + localStorage.getItem('token') + '&password=' + password + '&dataFormat=json';
 
-      this.http.post(consulta, null, { headers: headers })
-        .subscribe(res => {
-          resolve(res.json());
+      this.http.post(consulta, {}, {})
+        .then(res => {
+          console.log(res.data);
+          resolve(res.data);
         }, (err) => {
           reject(err);
         })
@@ -58,21 +57,20 @@ export class AuthServiceProvider {
 
   getUserInfo(userInfo = localStorage.getItem('login')) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
       var consulta = this.apiUrl + '/Users/Info?token=' + localStorage.getItem('token') + '&id=' + userInfo + '&dataFormat=json';
 
-      this.http.post(consulta, null, { headers: headers }).subscribe(res => {
-        if (this.tokenExpired(res.json()['Message'])) {
-          this.alertService.presentToast('Sua sessão expirou');
-          reject(res.json()['Message']);
-        } else {
-          this.userInfo = res.json();
-          resolve(res.json());
-        }
-      }, (err) => {
-        reject(err);
-      });
+      this.http.post(consulta, {}, {})
+        .then(res => {
+          if (this.tokenExpired(res.data['Message'])) {
+            this.alertService.presentToast('Sua sessão expirou');
+            reject(res.data['Message']);
+          } else {
+            this.userInfo = res.data;
+            resolve(res.data);
+          }
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
@@ -118,17 +116,15 @@ export class AuthServiceProvider {
   doBilling(idCartao, billingValue, password, source?) {
 
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
       if (!source)
         source = localStorage.getItem('login');
 
       var consulta = this.apiUrl + '/Cartao/CobrarComCartao?token=' + localStorage.getItem('token') + '&idCartao=' + idCartao + '&valor=' + billingValue + '&IdUsuarioOrigem=' + source + '&dataFormat=json' + '&senha=' + password;
 
-      this.http.post(consulta, null, { headers: headers })
-        .subscribe(res => {
+      this.http.post(consulta, {}, {})
+        .then(res => {
 
-          resolve(res.json());
+          resolve(res.data);
         }, (err) => {
 
           reject(err);
@@ -138,18 +134,12 @@ export class AuthServiceProvider {
 
   doTransfer(idTo, value, password) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-
       var consulta = this.apiUrl + '/Transactions/Save?token=' + localStorage.getItem('token') + '&idFrom=' + localStorage.getItem('login') + '&idTo=' + idTo + '&idType=3' + '&value=' + value + '&liberationPassword=' + password + '&dataFormat=json';
 
-
-      this.http.post(consulta, null, { headers: headers })
-        .subscribe(res => {
-
-          resolve(res.json());
+      this.http.post(consulta, {}, {})
+        .then(res => {
+          resolve(res.data);
         }, (err) => {
-
           reject(err);
         });
     });
@@ -158,12 +148,9 @@ export class AuthServiceProvider {
   phoneCheck(simInfo) {
     console.log(simInfo);
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-
       var consulta = this.apiUrl
         + '/Users/SavePreCadastro?'
-        +'id_device=' + simInfo.info['deviceId']
+        + 'id_device=' + simInfo.info['deviceId']
         + '&celular=' + simInfo.number['phone']
         + '&sim_serial=' + simInfo.info['simSerialNumber']
         + '&sim_operador=' + simInfo.info['mcc']
@@ -173,15 +160,14 @@ export class AuthServiceProvider {
         + '&ntw_iso_code=' + simInfo.info['countryCode']
         + '&ntw_operador=' + simInfo.info['mcc']
         + '&ntw_operador_nome=' + simInfo.info['carrierName']
-        + '&latitude=' 
-        + '&longitude=' 
-        + '&current_address=' 
+        + '&latitude='
+        + '&longitude='
+        + '&current_address='
         + '&dataFormat=json';
       console.log(consulta);
-      this.http.post(consulta, null, { headers: headers })
-        .subscribe(res => {
-
-          resolve(res.json());
+      this.http.post(consulta, {}, {})
+        .then(res => {
+          resolve(res.data);
         }, (err) => {
 
           reject(err);
@@ -191,12 +177,9 @@ export class AuthServiceProvider {
 
   phoneCheckCode(codeInfo) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-
       var consulta = this.apiUrl
         + '/Users/SavePreCadastro?'
-        +'id_device=' + codeInfo['deviceId']
+        + 'id_device=' + codeInfo['deviceId']
         + '&celular=' + codeInfo['phoneNumber']
         + '&sim_serial=' + codeInfo['simSerialNumber']
         + '&sim_operador=' + codeInfo['mcc']
@@ -206,17 +189,15 @@ export class AuthServiceProvider {
         + '&ntw_iso_code=' + codeInfo['countryCode']
         + '&ntw_operador=' + codeInfo['mcc']
         + '&ntw_operador_nome=' + codeInfo['carrierName']
-        + '&latitude=' 
-        + '&longitude=' 
-        + '&current_address=' 
+        + '&latitude='
+        + '&longitude='
+        + '&current_address='
         + '&dataFormat=json';
 
-      this.http.post(consulta, null, { headers: headers })
-        .subscribe(res => {
-
-          resolve(res.json());
+      this.http.post(consulta, {}, {})
+        .then(res => {
+          resolve(res.data);
         }, (err) => {
-
           reject(err);
         });
     });
@@ -228,15 +209,12 @@ export class AuthServiceProvider {
 
   getReceipt(identifier) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
 
       var consulta = this.apiUrl + '/Comprovante/GerarComprovante?token=' + localStorage.getItem('token') + '&Identifier=' + identifier + '&desc=pagamentoviaappionic&dataFormat=json';
 
-      this.http.post(consulta, null, { headers: headers })
-        .subscribe(res => {
-
-          resolve(res.json());
+      this.http.post(consulta, {}, {})
+        .then(res => {
+          resolve(res.data);
         }, (err) => {
 
           let alert = this.alertService.alertCtrl.create({

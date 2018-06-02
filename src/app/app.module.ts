@@ -8,6 +8,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HTTP } from '@ionic-native/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -120,7 +121,8 @@ export function createTranslateLoader(http: HttpClient) {
     CardProvider,
     BarcodeScanner,
     Sim,
-    File
+    File,
+    HTTP
   ]
 })
 export class AppModule { }
