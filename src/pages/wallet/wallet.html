@@ -12,66 +12,13 @@
 <ion-content no-padding>
   <ion-grid class="my-subheader">
     <ion-row>
-      <ion-col col-3 text-center>
-        <button ion-button [clear]=true icon-only block (click)="open('WalletPage')">
-          <img src="assets/imgs/menu-carteira.png" width="40">
-        </button>
-        <label for="" ion-text color=light>CARTEIRA</label>
+      <ion-col text-center text-uppercase>
+        <p no-margin ion-text color=blue-payplug>CARTEIRA</p>
       </ion-col>
-      <ion-col col-3 text-center>
-        <label for="" ion-text color=light>Principal</label>
-      </ion-col>
-      <ion-col col-3 text-center>
-        <label for="" ion-text color=light>Disponível</label>
-      </ion-col>
-      <ion-col col-3 text-center>
-        <label for="" ion-text color=light>Saque</label>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid>
-    <ion-row>
-      <ion-list inset>
-        <button ion-item *ngFor="let item of items" (click)="open(item.component)">
-          <ion-avatar item-start>
-            <img [src]="item.icon">
-          </ion-avatar>
-          <h2 style="font-weight: bold;" text-uppercase ion-text color=blue-payplug>{{item.title}}</h2>
-          <h3 ion-text color=blue-payplug text-wrap>{{item.description}}</h3>
-        </button>
-      </ion-list>
     </ion-row>
   </ion-grid>
 </ion-content>
 
-<ion-footer no-border>
-  <ion-navbar color=blue-payplug>
-    <ion-buttons center>
-      <ion-grid>
-        <ion-row justify-content-center>
-
-          <button color=light ion-button icon-only outline (click)="open('HomePage')">
-            <ion-icon name="home"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="pricetags"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="settings"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="swap"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline (click)="open('LoginPage')">
-            <ion-icon name="log-out"></ion-icon>
-          </button>
-        </ion-row>
-      </ion-grid>
-
-    </ion-buttons>
-  </ion-navbar>
+<ion-footer>
+  <footer></footer>
 </ion-footer>
