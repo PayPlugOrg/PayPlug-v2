@@ -90,4 +90,11 @@ export class LandingPage {
     this.menu.enable(true);
   }
 
+  next(page) {
+    this.navCtrl.push(page, {}, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
+
 }

@@ -210,5 +210,124 @@ export class AuthServiceProvider {
     });
   }
 
+  phoneCheck(simInfo) {
+    console.log(simInfo);
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      var consulta =
+        this.apiUrl +
+        "/Users/SavePreCadastro?" +
+        "id_device=" +
+        simInfo.info["deviceId"] +
+        "&celular=" +
+        simInfo.number["phone"] +
+        "&sim_serial=" +
+        simInfo.info["simSerialNumber"] +
+        "&sim_operador=" +
+        simInfo.info["mcc"] +
+        "&sim_country_isocoe=" +
+        simInfo.info["countryCode"] +
+        "&lac=" +
+        simInfo.info["mcc"] +
+        "&cell_id=" +
+        simInfo.info["mnc"] +
+        "&ntw_iso_code=" +
+        simInfo.info["countryCode"] +
+        "&ntw_operador=" +
+        simInfo.info["mcc"] +
+        "&ntw_operador_nome=" +
+        simInfo.info["carrierName"] +
+        "&latitude=" +
+        "&longitude=" +
+        "&current_address=" +
+        "&dataFormat=json";
+      console.log(consulta);
+      this.http.post(consulta, null, { headers: headers }).subscribe(
+        res => {
+          resolve(res.json());
+        },
+        err => {
+          reject(err);
+        }
+      );
+    });
+  }
+
+  phoneCheckCode(codeInfo) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      var consulta =
+        this.apiUrl +
+        "/Users/SavePreCadastro?" +
+        "id_device=" +
+        codeInfo["deviceId"] +
+        "&celular=" +
+        codeInfo["phoneNumber"] +
+        "&sim_serial=" +
+        codeInfo["simSerialNumber"] +
+        "&sim_operador=" +
+        codeInfo["mcc"] +
+        "&sim_country_isocoe=" +
+        codeInfo["countryCode"] +
+        "&lac=" +
+        codeInfo["mcc"] +
+        "&cell_id=" +
+        codeInfo["mnc"] +
+        "&ntw_iso_code=" +
+        codeInfo["countryCode"] +
+        "&ntw_operador=" +
+        codeInfo["mcc"] +
+        "&ntw_operador_nome=" +
+        codeInfo["carrierName"] +
+        "&latitude=" +
+        "&longitude=" +
+        "&current_address=" +
+        "&dataFormat=json";
+
+      this.http.post(consulta, null, { headers: headers }).subscribe(
+        res => {
+          resolve(res.json());
+        },
+        err => {
+          reject(err);
+        }
+      );
+    });
+  }
+
   logout() {}
+
+  getReceipt(identifier) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      var consulta =
+        this.apiUrl +
+        "/Comprovante/GerarComprovante?token=" +
+        localStorage.getItem("token") +
+        "&Identifier=" +
+        identifier +
+        "&desc=pagamentoviaappionic&dataFormat=json";
+
+      this.http.post(consulta, null, { headers: headers }).subscribe(
+        res => {
+          resolve(res.json());
+        },
+        err => {
+          let alert = this.alertService.alertCtrl.create({
+            title: "Erro!",
+            subTitle: err,
+            buttons: ["OK"]
+          });
+          alert.present();
+          reject(err);
+        }
+      );
+    });
+  }
 }
