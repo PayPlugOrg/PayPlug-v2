@@ -31,6 +31,7 @@
 
 .my-subheader {
   background: #d9dade;
+  font-weight: bold;
 }
 
 ion-icon {
@@ -45,7 +46,11 @@ ion-icon {
     height: 1em;
   } // custom icons
   &[class*="pay-qrcode"] {
-    mask-image: url(../assets/imgs/assets/imgs/menu-qrcode.png);
+    mask-image: url(../assets/imgs/utilities/icones_qrcode.svg);
+    padding: 0 0.5em;
+    font-size: 1.8em;
+    line-height: .67;
+    pointer-events: none;
   }
   &[class*="appname-customicon2"] {
     mask-image: url(../assets/img/customicon2.svg);

@@ -22,7 +22,7 @@
     <ion-row>
       <ion-col no-padding col-3 text-center>
         <button ion-button [clear]=true icon-only block>
-          <img src="assets/imgs/menu-qrcode.png" width="40">
+          <img src="assets/imgs/utilities/icones_qrcode.svg" width="40">
         </button>
         <label for="" ion-text color=light>QR CODE</label>
       </ion-col>
@@ -46,10 +46,27 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-toolbar transparent>
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="heart"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="showOffers()">
+        <ion-icon name="flash"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="myInput" placeholder="PESQUISE LOJAS, CUPONS E DESCONTOS" [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content no-padding>
-  <div #map id="map"></div>
+
+  <div *ngIf="!showOffersVar" #map id="map"></div>
+
+  <offers *ngIf="showOffersVar"></offers>
+
 </ion-content>
 
 <ion-footer>

@@ -50,7 +50,7 @@ import { BillingAuthorizationPageModule } from "../pages/billing-authorization/b
 import { CardNewPage } from "../pages/card-new/card-new";
 import { CardNewPageModule } from "../pages/card-new/card-new.module";
 import { ComponentsModule } from "../components/components.module";
-import { PageProvider } from '../providers/page/page';
+import { PageProvider } from "../providers/page/page";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");

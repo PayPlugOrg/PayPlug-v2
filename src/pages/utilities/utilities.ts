@@ -123,10 +123,6 @@ export class UtilitiesPage {
     this.partners = this.reorderArray(this.partners, indexes);
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad UtilitiesPage");
-  }
-
   dismiss() {
     this.viewCtrl.dismiss();
   }

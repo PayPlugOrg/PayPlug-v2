@@ -1,15 +1,22 @@
 import { NgModule } from "@angular/core";
 import { FooterComponent } from "./footer/footer";
 import { IonicModule } from "ionic-angular";
-import { MapComponent } from './map/map';
-import { SimpleHeaderComponent } from './simple-header/simple-header';
+import { SimpleHeaderComponent } from "./simple-header/simple-header";
+import { ExpandableComponent } from "./expandable/expandable";
+import { OffersComponent } from "./home/offers/offers";
 @NgModule({
-  declarations: [FooterComponent,
-    MapComponent,
-    SimpleHeaderComponent],
+  declarations: [
+    FooterComponent,
+    SimpleHeaderComponent,
+    ExpandableComponent,
+    OffersComponent
+  ],
   imports: [IonicModule],
-  exports: [FooterComponent,
-    MapComponent,
-    SimpleHeaderComponent]
+  exports: [
+    FooterComponent,
+    SimpleHeaderComponent,
+    ExpandableComponent,
+    OffersComponent
+  ]
 })
 export class ComponentsModule {}

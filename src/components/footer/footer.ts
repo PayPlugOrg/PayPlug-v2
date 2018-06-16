@@ -22,7 +22,7 @@ export class FooterComponent {
   open(page) {
     let cardModal = this.modalCtrl.create(page);
     cardModal.onDidDismiss(data => {
-      console.log(data);
+      // console.log(data);
     });
     cardModal.present();
   }

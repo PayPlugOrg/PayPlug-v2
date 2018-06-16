@@ -3,6 +3,7 @@ import { NavController, NavParams, Platform } from "ionic-angular";
 import { LandingPage } from "../landing/landing";
 import { AlertServiceProvider } from "../../providers/alert-service/alert-service";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { LoginPage } from "../login/login";
 
 declare var google;
 let map: any;
@@ -21,6 +22,7 @@ export class HomePage {
   firstName: string;
   saldoTotal = "";
   saldoSaque = "";
+  showOffersVar = false;
   @ViewChild("map") mapElement: ElementRef;
 
   constructor(
@@ -40,11 +42,11 @@ export class HomePage {
   ionViewWillEnter() {
     if (!localStorage.getItem("token")) {
       setTimeout(() => {
-        this.navCtrl.setRoot(LandingPage);
+        this.navCtrl.setRoot("LoginPage");
       });
     } else {
       this.authService.getUserInfo().then(result => {
-        console.log((this.firstName = result["Nome"].split(" ")[0]));
+        // console.log((this.firstName = result["Nome"].split(" ")[0]));
         localStorage.setItem("firstname", result["Nome"].split(" ")[0]);
         this.firstName = result["Nome"].split(" ")[0];
         this.saldoTotal = result["SaldoTotal"];
@@ -52,6 +54,13 @@ export class HomePage {
       });
     }
     this.alertService.loading.dismiss();
+  }
+
+  showOffers() {
+    if (this.showOffersVar) {
+      this.showOffersVar = false;
+      this.initMap();
+    } else this.showOffersVar = true;
   }
 
   open(page) {
@@ -111,6 +120,10 @@ export class HomePage {
     );
   }
 
+  onCancel(ev) {}
+
+  onInput(ev) {}
+
   createMarker(place) {
     var placeLoc = place.geometry.location;
     var image = {
@@ -125,7 +138,7 @@ export class HomePage {
       position: placeLoc,
       icon: image
     });
-    console.log(place);
+    // console.log(place);
     google.maps.event.addListener(marker, "click", function() {
       // infowindow.setContent(place.name);
       // infowindow.open(map, this);
