@@ -51,6 +51,8 @@ import { CardNewPage } from "../pages/card-new/card-new";
 import { CardNewPageModule } from "../pages/card-new/card-new.module";
 import { ComponentsModule } from "../components/components.module";
 import { PageProvider } from "../providers/page/page";
+import { Sim } from "@ionic-native/sim";
+import { File } from "@ionic-native/file";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");
@@ -117,7 +119,8 @@ export function createTranslateLoader(http: HttpClient) {
     SocialSharing,
     CardProvider,
     BarcodeScanner,
-    PageProvider
+    PageProvider,
+    File
   ]
 })
 export class AppModule {}

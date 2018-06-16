@@ -40,7 +40,8 @@ export class BillingIdentificationPage {
     public authService: AuthServiceProvider,
     public modalCtrl: ModalController
   ) {
-    this.showBillingValue = navParams.get('rawValue');
+    this.rawBillingValue = navParams.get('rawValue');
+    this.showBillingValue = this.formatter.apply(navParams.get('rawValue'));
     this.operation = this.navParams.get('operation');
 
     if (this.navParams.get('operation') == 'Transferência') {
@@ -82,7 +83,7 @@ export class BillingIdentificationPage {
   async dismiss() {
     if (this.identification) {
       await this.getUserInfo();
-      this.navCtrl.push('BillingAuthorizationPage',{information: this.information},{
+      this.navCtrl.push('BillingAuthorizationPage',{information: this.information, rawValue: this.rawBillingValue, billingValue: this.showBillingValue, operation: this.navParams.get('operation')},{
         animate: true,
         direction:'forward'
       })

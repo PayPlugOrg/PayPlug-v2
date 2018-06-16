@@ -48,11 +48,11 @@
     </ion-row>
     <ion-row margin>
       <ion-segment [(ngModel)]="action" color="blue-payplug">
-        <ion-segment-button value="friends" (ionSelect)="action('share')">
-          Compartilhar cobrança
+        <ion-segment-button value="share" (click)="actionTrigger('share')">
+          Compartilhar
         </ion-segment-button>
-        <ion-segment-button value="enemies" (ionSelect)="action()">
-          Salvar para impressão
+        <ion-segment-button value="save" (click)="actionTrigger('save')">
+          Salvar
         </ion-segment-button>
       </ion-segment>
     </ion-row>
