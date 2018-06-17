@@ -1,0 +1,40 @@
+<!--
+  Generated template for the UtilitiesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color=blue-payplug>
+    <simple-header></simple-header>
+  </ion-navbar>
+  <ion-grid no-padding>
+    <ion-row>
+      <button clear color=dark icon-left ion-button small full (click)="dismiss()">
+        <ion-icon color=dark name="arrow-down"></ion-icon>TODOS OS UTILITÁRIOS</button>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-grid class="my-subheader">
+    <ion-row>
+      <ion-col offset-10 col-2 text-center text-uppercase>
+        <button clear small ion-button (click)="toggleEdit()">{{editButton}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list class="chat-sliding-demo">
+    <ion-item-group [reorder]="editing" (ionItemReorder)="reorderData($event)">
+      <ion-item *ngFor="let partner of partners">
+        <ion-thumbnail item-start>
+          <img [src]="partner.icon">
+        </ion-thumbnail>
+        <h2>{{ partner.partner }}</h2>
+        <p>{{ partner.info1 }} • {{ partner.info2 }}</p>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

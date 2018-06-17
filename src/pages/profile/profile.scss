@@ -1,0 +1,12 @@
+page-profile {
+  .profileHeader {
+    position: relative;
+    background: url("../assets/imgs/time/amanhecer.svg") center center no-repeat;
+    background-size: cover;
+  }
+  .profileHeader img {
+    border-radius: 15px;
+    height: 100px;
+    width: 100px;
+  }
+}

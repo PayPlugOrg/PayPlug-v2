@@ -1,178 +1,74 @@
-<ion-header>
-  <ion-navbar color=blue-payplug>
-    <ion-buttons start>
-      <button ion-button icon-only menuToggle>
+<ion-header class="pay-merchan">
+  <ion-navbar transparent>
+    <ion-buttons>
+      <button ion-button icon-only (click)="open('MenuPage')">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>
-      <img height="30" src="assets/imgs/logo-branco.png">
+      <h2 ion-text color="light">Olá, {{firstName}}</h2>
     </ion-title>
     <ion-buttons end>
-      <button color=light ion-button small icon-only outline>
-        <ion-icon name="notifications"></ion-icon>
-      </button>
-      <button color=light ion-button small icon-only outline>
+
+      <button color=light ion-button small icon-only outline (click)="open('MessagesPage')">
         <ion-icon name="text"></ion-icon>
       </button>
-      <button color=light ion-button small icon-only outline>
-        <ion-icon name="search"></ion-icon>
+      <button color=light ion-button small icon-only outline (click)="open('CartPage')">
+        <ion-icon name="cart"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
-</ion-header>
-
-<ion-content no-padding>
-  <ion-grid class="subheader-user">
+  <ion-grid>
     <ion-row>
-      <ion-col col-6 no-padding>
-        <ion-item no-lines no-padding>
-          <ion-avatar item-start no-margin>
-            <img src="assets/imgs/placeholder.png">
-          </ion-avatar>
-          <h2 ion-text color="light">Olá, {{firstName}}</h2>
-        </ion-item>
-      </ion-col>
-      <ion-col col-3 no-padding text-center>
-        <p class="home-label" no-margin ion-text color=light>CARTÃO
-          <br> PRINCIPAL</p>
-        <h6 no-margin ion-text color=light>R${{saldoTotal}}</h6>
-      </ion-col>
-      <ion-col col-3 no-padding text-center>
-        <p class="home-label" no-margin ion-text color=light>DISPONÍVEL
-          <br> SAQUE</p>
-        <h6 no-margin ion-text color=light>R${{saldoSaque}}</h6>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-  <ion-grid class="my-subheader">
-    <ion-row>
-      <ion-col col-3 text-center>
+      <ion-col no-padding col-3 text-center>
         <button ion-button [clear]=true icon-only block>
-          <img src="assets/imgs/menu-qrcode.png" width="40">
+          <img src="assets/imgs/utilities/icones_qrcode.svg" width="40">
         </button>
         <label for="" ion-text color=light>QR CODE</label>
       </ion-col>
-      <ion-col col-3 text-center>
+      <ion-col no-padding col-3 text-center>
         <button ion-button [clear]=true icon-only block (click)="open('PaymentAuthorizationPage')">
           <img src="assets/imgs/menu-pagar.png" width="40">
         </button>
         <label for="" ion-text color=light>PAGAR</label>
       </ion-col>
-      <ion-col col-3 text-center>
+      <ion-col no-padding col-3 text-center>
         <button ion-button [clear]=true icon-only block (click)="open('BillingPage')">
           <img src="assets/imgs/menu-cobrar.png" width="40">
         </button>
         <label for="" ion-text color=light>COBRAR</label>
       </ion-col>
-      <ion-col col-3 text-center>
+      <ion-col no-padding col-3 text-center>
         <button ion-button [clear]=true icon-only block (click)="open('WalletPage')">
           <img src="assets/imgs/menu-carteira.png" width="40">
         </button>
-        <label for="" ion-text color=light>CARTEIRA</label>
+        <label for="" text-nowrap ion-text color=light>CARTEIRA</label>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-toolbar transparent>
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="heart"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="showOffers()">
+        <ion-icon name="flash"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="myInput" placeholder="PESQUISE LOJAS, CUPONS E DESCONTOS" [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
-          <img src="assets/imgs/apps-cupons.png" width="40">
-        </button>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
-          <img src="assets/imgs/apps-social.png" width="40">
-        </button>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline (click)="open('PaymentAuthorizationPage')">
-          <img src="assets/imgs/apps-cartoes.png" width="40">
-        </button>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
-          <img src="assets/imgs/apps-mais.png" width="40">
-        </button>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
-          <img src="assets/imgs/apps-hotel.png" width="40">
-        </button>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
-          <img src="assets/imgs/apps-bares.png" width="40">
-        </button>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button color=danger icon-only block outline>
-          <img src="assets/imgs/apps-restaurantes.png" width="40">
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid class="bg-img">
-    <ion-row>
-      <ion-col col-8 offset-2>
-        <p ion-text color=light text-center>Encontre estabelecimentos perto de você para comprar com o seu aplicativo</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-8 offset-2>
-        <button block ion-button [outline]=true large outline color=light text-uppercase>Faça um tour</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-card>
-    <img src="assets/imgs/viapar.jpg" />
-  </ion-card>
+<ion-content no-padding>
+
+  <div *ngIf="!showOffersVar" #map id="map"></div>
+
+  <offers *ngIf="showOffersVar"></offers>
 
 </ion-content>
 
-<ion-footer no-border>
-  <ion-navbar color=blue-payplug>
-    <ion-buttons center>
-      <ion-grid>
-        <ion-row justify-content-center>
-          <ion-col col-auto no-padding text-center>
-            <button color=light ion-button icon-only outline>
-              <ion-icon name="home"></ion-icon>
-            </button>
-            <p class="home-label" no-margin ion-text color=light>HOME</p>
-          </ion-col>
-          <ion-col col-auto no-padding text-center>
-            <button color=light ion-button icon-only outline>
-              <ion-icon name="pricetags"></ion-icon>
-            </button>
-            <p class="home-label" no-margin ion-text color=light>CUPONS</p>
-          </ion-col>
-          
-          <ion-col col-auto no-padding text-center>
-            <button color=light ion-button icon-only outline>
-              <ion-icon name="settings"></ion-icon>
-            </button>
-            <p class="home-label" no-margin ion-text color=light>AJUSTES</p>
-          </ion-col>
-          
-          <ion-col col-auto no-padding text-center>
-            <button color=light ion-button icon-only outline>
-              <ion-icon name="swap"></ion-icon>
-            </button>
-            <p class="home-label" no-margin ion-text color=light>MUDAR <br> CONTA</p>
-          </ion-col>
-          
-          <ion-col col-auto no-padding text-center>
-            <button color=light ion-button icon-only outline (click)="logout()">
-              <ion-icon name="log-out"></ion-icon>
-            </button>
-            <p class="home-label" no-margin ion-text color=light>SAIR</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-    </ion-buttons>
-  </ion-navbar>
+<ion-footer>
+  <footer></footer>
 </ion-footer>

@@ -1,3 +1,8 @@
 page-login {
-
+  .my-component {
+    background: color($colors, blue-payplug, base);
+  }
+  .pay-label {
+    transform-origin: center top !important;
+  }
 }

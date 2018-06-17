@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
-import { Platform, Config } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { Component } from "@angular/core";
+import { Platform, Config } from "ionic-angular";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
 
-import { HomePage } from '../pages/home/home';
-import { TranslateService } from '@ngx-translate/core';
+import { HomePage } from "../pages/home/home";
+import { TranslateService } from "@ngx-translate/core";
+import { LoginPage } from "../pages/login/login";
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage: any = HomePage;
 
   constructor(
-    platform: Platform, 
-    statusBar: StatusBar, 
+    platform: Platform,
+    statusBar: StatusBar,
     splashScreen: SplashScreen,
     private translate: TranslateService,
     private config: Config
@@ -27,11 +28,18 @@ export class MyApp {
     this.initTranslate();
   }
 
+  setRoot() {
+    if (localStorage.getItem("token")) {
+      this.rootPage = HomePage;
+    } else {
+      this.rootPage = "LoginPage";
+    }
+  }
+
   initTranslate() {
-    this.translate.setDefaultLang('pt-br');
-    this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
-      this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
-    })
+    this.translate.setDefaultLang("pt-br");
+    this.translate.get(["BACK_BUTTON_TEXT"]).subscribe(values => {
+      this.config.set("ios", "backButtonText", values.BACK_BUTTON_TEXT);
+    });
   }
 }
-

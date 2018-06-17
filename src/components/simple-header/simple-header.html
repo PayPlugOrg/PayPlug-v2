@@ -1,0 +1,11 @@
+<ion-title>
+  <h2 ion-text color="light">Olá, {{firstName}}</h2>
+</ion-title>
+<ion-buttons end>
+  <button *ngIf="message" color=light ion-button small icon-only outline (click)="open('MessagesPage')">
+    <ion-icon name="text"></ion-icon>
+  </button>
+  <button *ngIf="cart" color=light ion-button small icon-only outline (click)="open('CartPage')">
+    <ion-icon name="cart"></ion-icon>
+  </button>
+</ion-buttons>
