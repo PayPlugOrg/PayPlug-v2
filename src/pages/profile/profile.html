@@ -23,7 +23,7 @@
   </ion-grid>
   <div class="profileHeader" text-center text-uppercase>
     <img margin-top src="assets/imgs/profile.jpg" alt="">
-    <h3 *ngIf="firstName" ion-text color="light">{{ firstName }}</h3>
+    <h3 *ngIf="firstName" ion-text color="light" padding-bottom no-margin>{{ firstName }}</h3>
   </div>
   <ion-grid margin-vertical>
     <ion-row *ngFor="let item of items">
@@ -48,22 +48,76 @@
               <ion-input formControlName="newMail" type=""></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label ion-text floating>Confirme o novo email</ion-label>
-              <ion-input formControlName="newMailConfirm" type=""></ion-input>
+              <ion-label ion-text floating>Confirmar e-mail</ion-label>
+              <ion-input formControlName="confirmMail" type=""></ion-input>
             </ion-item>
           </form>
         </ion-row>
-        <ion-row padding *ngIf="item.expanded && item.title==='TELEFONE'">
-          teste
+        <ion-row *ngIf="item.expanded && item.title==='TELEFONE'">
+          <form [formGroup]="formTelefone">
+            <ion-item>
+              <ion-label ion-text floating>Telefone atual</ion-label>
+              <ion-input formControlName="oldPhone" type=""></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label ion-text floating>Novo telefone</ion-label>
+              <ion-input formControlName="newPhone" type=""></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label ion-text floating>Confirmar telefone</ion-label>
+              <ion-input formControlName="confirmPhone" type=""></ion-input>
+            </ion-item>
+          </form>
         </ion-row>
         <ion-row padding *ngIf="item.expanded && item.title==='SENHA'">
-          teste
+          <form [formGroup]="formSenha">
+            <ion-item>
+              <ion-label ion-text floating>Senha atual</ion-label>
+              <ion-input formControlName="oldPassword" type=""></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label ion-text floating>Nova senha</ion-label>
+              <ion-input formControlName="newPassword" type=""></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label ion-text floating>Confirmar senha</ion-label>
+              <ion-input formControlName="confirmPassword" type=""></ion-input>
+            </ion-item>
+          </form>
         </ion-row>
         <ion-row padding *ngIf="item.expanded && item.title==='CARTÕES'">
           teste
         </ion-row>
         <ion-row padding *ngIf="item.expanded && item.title==='ENDEREÇO'">
-          teste
+          <form [formGroup]="formEndereco">
+            <ion-item>
+              <ion-label ion-text floating>Digite seu CEP</ion-label>
+              <ion-input formControlName="addressCep" type=""></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label ion-text floating>Logradouro</ion-label>
+              <ion-input formControlName="address" type=""></ion-input>
+            </ion-item>
+            <ion-row>
+              <ion-item col-6>
+                <ion-label ion-text floating>Número</ion-label>
+                <ion-input formControlName="addressNumber" type=""></ion-input>
+              </ion-item>
+              <ion-item col-6>
+                <ion-label ion-text floating>Complemento</ion-label>
+                <ion-input formControlName="addressComplement" type=""></ion-input>
+              </ion-item>
+              <ion-item col-6>
+                <ion-label ion-text floating>Cidade</ion-label>
+                <ion-input formControlName="addressCity" type=""></ion-input>
+              </ion-item>
+              <ion-item col-6>
+                <ion-label ion-text floating>Estado</ion-label>
+                <ion-input formControlName="addressState" type=""></ion-input>
+              </ion-item>
+            </ion-row>
+
+          </form>
         </ion-row>
 
       </expandable>
