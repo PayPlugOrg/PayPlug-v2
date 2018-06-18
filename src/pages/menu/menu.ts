@@ -87,7 +87,7 @@ export class MenuPage {
       {
         title: "Ofertas em Evidência",
         // description: "Confira o sado de todos os cartões cadastrados",
-        component: "CardManagementPage"
+        component: "TrendsPage"
         // icon: "home"
       },
       {
