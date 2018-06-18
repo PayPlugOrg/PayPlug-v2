@@ -21,4 +21,25 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-searchbar placeholder="Pesquise a sua dúvida" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  <ion-grid padding-right>
+    <ion-row *ngFor="let item of items">
+      <ion-item class="bold" icon-right detail-none (click)="expandItem(item)">
+        <h3 class="bold" ion-text color=blue-payplug>{{item.title}}</h3>
+        <button ion-button clear item-end>
+          <ion-icon name="add" *ngIf="!item.expanded"></ion-icon>
+          <ion-icon name="remove" *ngIf="item.expanded"></ion-icon>
+        </button>
+      </ion-item>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+        <ion-row *ngIf="item.expanded">
+          <p padding-horizontal ion-text>{{item.text}}</p>
+        </ion-row>
+      </expandable>
+
+    </ion-row>
+
+    <button margin-left margin-top ion-button outline color="orange-payplug">Suporte</button>
+  </ion-grid>
 </ion-content>

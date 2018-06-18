@@ -16,6 +16,17 @@
         <p no-margin ion-text color=gray-payplug-3>CARTEIRA</p>
       </ion-col>
     </ion-row>
+    
+  </ion-grid>
+  <ion-grid padding>
+    <ion-row>
+      <ion-col text-center col-4 *ngFor="let item of items">
+        <button clear ion-button icon-only large (click)="open(item.component)">
+          <img width="60" [src]="item.image" alt="">
+        </button>
+        <label class="bold caps" for="">{{ item.title }}</label>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
 

@@ -45,7 +45,7 @@ export class MenuPage {
       {
         title: "Cobrar",
         // description: "Confira o sado de todos os cartões cadastrados",
-        component: "CardManagementPage"
+        component: "BillingPage"
         // icon: "home"
       },
       {
@@ -75,7 +75,7 @@ export class MenuPage {
       {
         title: "Indicar Usuário",
         // description: "Confira o sado de todos os cartões cadastrados",
-        component: "CardManagementPage"
+        component: "InvitePage"
         // icon: "home"
       },
       {
@@ -129,7 +129,7 @@ export class MenuPage {
       {
         title: "Transferência",
         // description: "Confira o sado de todos os cartões cadastrados",
-        component: "CardManagementPage"
+        component: "TransferPage"
         // icon: "home"
       }
     ];
