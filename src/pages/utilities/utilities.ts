@@ -20,7 +20,7 @@ import {
 })
 export class UtilitiesPage {
   partners: any[];
-  editButton: string = "Edit";
+  editButton: string = "ALTERAR";
   editing: boolean = false;
   constructor(
     public navCtrl: NavController,
@@ -106,9 +106,9 @@ export class UtilitiesPage {
   toggleEdit() {
     this.editing = !this.editing;
     if (this.editing) {
-      this.editButton = "Done";
+      this.editButton = "FEITO";
     } else {
-      this.editButton = "Edit";
+      this.editButton = "ALTERAR";
     }
   }
 

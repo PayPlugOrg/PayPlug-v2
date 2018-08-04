@@ -1,1 +1,11 @@
-page-cart {}
+page-cart {
+  .ship-button {
+    font-size: 70%
+  }
+  .items-list {
+    font-size: 80%;
+  }
+  .item-header {
+    background: color($colors, gray-payplug-3, base);
+  }
+}

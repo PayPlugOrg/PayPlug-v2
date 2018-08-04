@@ -6,9 +6,8 @@ import { StatusBar } from "@ionic-native/status-bar";
 
 import { NgxQRCodeModule } from "ngx-qrcode2";
 
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HTTP } from '@ionic-native/http';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
@@ -54,6 +53,9 @@ import { ComponentsModule } from "../components/components.module";
 import { PageProvider } from "../providers/page/page";
 import { Sim } from "@ionic-native/sim";
 import { File } from "@ionic-native/file";
+import { StorePage } from "../pages/store/store";
+import { StorePageModule } from "../pages/store/store.module";
+import { StoreProvider } from '../providers/store/store';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");
@@ -89,7 +91,8 @@ export function createTranslateLoader(http: HttpClient) {
     BillingIdentificationPageModule,
     BillingAuthorizationPageModule,
     CardNewPageModule,
-    ComponentsModule
+    ComponentsModule,
+    StorePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -109,7 +112,8 @@ export function createTranslateLoader(http: HttpClient) {
     CardPage,
     BillingIdentificationPage,
     BillingAuthorizationPage,
-    CardNewPage
+    CardNewPage,
+    StorePage
   ],
   providers: [
     StatusBar,
@@ -123,7 +127,7 @@ export function createTranslateLoader(http: HttpClient) {
     PageProvider,
     Sim,
     File,
-    HTTP
+    StoreProvider
   ]
 })
 export class AppModule {}

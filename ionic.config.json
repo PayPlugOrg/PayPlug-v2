@@ -1,14 +1,12 @@
 {
   "name": "AppPayPlug2",
-  "app_id": "21e1c547",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
   },
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://177.52.170.238:83/v1"
-    }
-  ]
+  "type": "ionic-angular",
+  "proxies": [{
+    "path": "/api",
+    "proxyUrl": "http://177.52.170.238:84/v1"
+  }],
+  "pro_id": "21e1c547"
 }

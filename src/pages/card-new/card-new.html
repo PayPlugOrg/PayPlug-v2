@@ -6,13 +6,100 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>card-new</ion-title>
+  <ion-navbar color=blue-payplug>
+    <simple-header></simple-header>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
+  <ion-grid class="my-subheader">
+    <ion-row>
+      <ion-col text-center text-uppercase>
+        <p no-margin ion-text color=gray-payplug-3>CARTÕES</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <p text-center>INSIRA OS DADOS ABAIXO PARA ADICIONAR O CARTÃO.</p>
+
+  <form [formGroup]="formCard">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-11>
+          <ion-item>
+            <ion-label floating>NÚMERO DO CARTÃO</ion-label>
+            <ion-input type="text" formControlName="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-1>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>VALIDADE (MM/AA)</ion-label>
+            <ion-input type="text" formControlName="valid"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>TITULAR DO CARTÃO</ion-label>
+            <ion-input type="text" formControlName="holder"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>CVV</ion-label>
+            <ion-input type="text" formControlName="cvv"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>CELULAR</ion-label>
+            <ion-input type="text" formControlName="cell"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>CPF/CNPJ</ion-label>
+            <ion-input type="text" formControlName="cpf"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list no-lines radio-group formControlName="type">
+            <ion-item>
+              <ion-label>Crédito</ion-label>
+              <ion-radio value="credit" checked></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Débito</ion-label>
+              <ion-radio value="debit"></ion-radio>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col offset-2 col-8>
+          <button ion-button block outline color=blue-payplug>CONFIRMAR</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 </ion-content>
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

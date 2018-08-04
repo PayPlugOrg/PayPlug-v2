@@ -21,6 +21,26 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <p text-center>OFERTAS QUE VOCÊ CURTIU.</p>
+  <div text-center *ngIf="!likes">
+    <p style="font-size: 70%">VOCÊ AINDA NÃO CURTIU NENHUMA OFERTA.
+      <br> APERTE O ÍCONE DO CORAÇÃO NAS OFERTAS
+      <br> PARA RECEBER INFORMAÇÕES DA LOJA DA OFERTA
+      <br> E DE OPORTUNIDADES SIMILARES
+    </p>
+    <ion-icon name="heart" color=danger></ion-icon>
+  </div>
+  <ion-grid *ngIf="likes" no-padding>
+    <p text-center style="font-size: 70%">OFERTAS QUE VOCÊ CURTIU.</p>
+
+    <ion-searchbar no-padding placeholder="PESQUISE OS SEUS LIKES" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+
+
+  </ion-grid>
 
 </ion-content>
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

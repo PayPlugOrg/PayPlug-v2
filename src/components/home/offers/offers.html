@@ -1,57 +1,47 @@
 <ion-slides>
-  <ion-slide>
+  <ion-slide *ngFor="let offer of hotOffers">
     <ion-card>
 
-      <img src="assets/imgs/offers/resturant.jpg">
+      <img style="height: 150px;" src="assets/imgs/offers/resturant.jpg">
 
       <ion-card-content no-padding>
         <ion-row>
-          <ion-col col-6>
+          <ion-col col-7>
             <ion-row>
-              <h6>JANTAR PARA DUAS PESSOAS COM SOBREMESA</h6>
-              <p class="p-mod">Est veniam occaecat fugiat id incididunt duis anim incididunt.</p>
+              <h3>{{offer.title}}</h3>
+              <p class="p-mod">{{offer.description}}.</p>
             </ion-row>
           </ion-col>
-          <ion-col col-6>
-
+          <ion-col col-5 padding-vertical>
+            <h5 class="text-tachado">R${{offer.from}}</h5>
+            <h1 style="font-weight: bold">R${{offer.to}}</h1>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <hr>
-          <ion-col no-padding style="width: 20%">
-            <button color=gray-payplug-3 clear ion-button icon-only>
-              <ion-icon name="cart"></ion-icon>
-            </button>
+          <ion-col no-padding style="width: 20%" (tap)="addCart(offer)">
+            <ion-icon [color]=offer.cart name="cart"></ion-icon>
+            <p style="font-size: 50%">COLOCAR NO CARRINHO</p>
+          </ion-col>
+          <ion-col no-padding style="width: 20%" (click)="open('StorePage', offer.store)">
+            <ion-icon name="map"></ion-icon>
+            <p style="font-size: 50%">IR A LOJA</p>
           </ion-col>
           <ion-col no-padding style="width: 20%">
-            <button color=gray-payplug-3 clear ion-button icon-only>
-              <ion-icon name="cart"></ion-icon>
-            </button>
+            <ion-icon name="share"></ion-icon>
+            <p style="font-size: 50%">COMPARTILHAR OFERTA</p>
           </ion-col>
-          <ion-col no-padding style="width: 20%">
-            <button color=gray-payplug-3 clear ion-button icon-only>
-              <ion-icon name="cart"></ion-icon>
-            </button>
+          <ion-col no-padding style="width: 20%" (tap)="like(offer)">
+            <ion-icon [color]="offer.like" name="heart"></ion-icon>
+            <p style="font-size: 50%">GOSTEI DA OFERTA</p>
           </ion-col>
-          <ion-col no-padding style="width: 20%">
-            <button color=gray-payplug-3 clear ion-button icon-only>
-              <ion-icon name="cart"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col no-padding style="width: 20%">
-            <button color=gray-payplug-3 clear ion-button icon-only>
-              <ion-icon name="cart"></ion-icon>
-            </button>
+          <ion-col no-padding style="width: 20%" (click)="showAlert(offer)">
+            <ion-icon color=primary name="time"></ion-icon>
+            <p style="font-size: 50%">TEMPO RESTANTE</p>
           </ion-col>
         </ion-row>
       </ion-card-content>
     </ion-card>
-  </ion-slide>
-  <ion-slide>
-    <h1>Slide 2</h1>
-  </ion-slide>
-  <ion-slide>
-    <h1>Slide 3</h1>
   </ion-slide>
 </ion-slides>

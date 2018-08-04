@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the LikesPage page.
@@ -10,16 +10,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-likes',
-  templateUrl: 'likes.html',
+  selector: "page-likes",
+  templateUrl: "likes.html"
 })
 export class LikesPage {
-
+  likes: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.likes = [
+      {
+        id: "1",
+        estabelecimento: "restaurante do shopping iguatemi",
+        descricao: "jantar para duas pessoas com sobremesa",
+        from: "179,00",
+        to: "129,90"
+      }
+    ];
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LikesPage');
+    console.log("ionViewDidLoad LikesPage");
   }
-
 }

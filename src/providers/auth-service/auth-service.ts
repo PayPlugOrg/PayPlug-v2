@@ -25,7 +25,7 @@ export class AuthServiceProvider {
   }
 
   login(user) {
-    console.log(user["username"] + user["password"]);
+    // console.log(user["username"] + user["password"]);
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append("Content-Type", "application/json");

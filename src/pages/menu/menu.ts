@@ -1,5 +1,10 @@
 import { Component, ViewChild } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController
+} from "ionic-angular";
 import { FooterComponent } from "../../components/footer/footer";
 
 /**
@@ -22,7 +27,11 @@ export class MenuPage {
     // description: any;
     // icon: string;
   }>;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController
+  ) {
     this.items = [
       {
         title: "Carrinho",
@@ -160,14 +169,32 @@ export class MenuPage {
   }
 
   logout() {
-    localStorage.removeItem("token");
-    this.navCtrl.setRoot(
-      "LoginPage",
-      {},
-      {
-        animate: true,
-        direction: "back"
-      }
-    );
+    const confirm = this.alertCtrl.create({
+      title: "SAIR",
+      message: "CONFIRMAR SAIR?",
+      buttons: [
+        {
+          text: "NÃO",
+          handler: () => {
+            console.log("Disagree clicked");
+          }
+        },
+        {
+          text: "SIM",
+          handler: () => {
+            localStorage.removeItem("token");
+            this.navCtrl.setRoot(
+              "LoginPage",
+              {},
+              {
+                animate: true,
+                direction: "back"
+              }
+            );
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

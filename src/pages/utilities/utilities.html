@@ -21,11 +21,13 @@
 <ion-content no-padding>
   <ion-grid class="my-subheader">
     <ion-row>
-      <ion-col offset-10 col-2 text-center text-uppercase>
+      <ion-col offset-8 col-4 text-center text-uppercase>
         <button clear small ion-button (click)="toggleEdit()">{{editButton}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <p ion-text text-center>TOQUE PARA ACESSAR O UTILITÁRIO</p>
+  <p ion-text text-center>TOQUE EM ALTERAR E ARRASTE O ÍCONE PARA REORDENAR OS UTILITÁRIOS</p>
   <ion-list class="chat-sliding-demo">
     <ion-item-group [reorder]="editing" (ionItemReorder)="reorderData($event)">
       <ion-item *ngFor="let partner of partners">
@@ -33,7 +35,6 @@
           <img [src]="partner.icon">
         </ion-thumbnail>
         <h2>{{ partner.partner }}</h2>
-        <p>{{ partner.info1 }} • {{ partner.info2 }}</p>
       </ion-item>
     </ion-item-group>
   </ion-list>

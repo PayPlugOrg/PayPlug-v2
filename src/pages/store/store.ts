@@ -1,38 +1,38 @@
 import { Component } from "@angular/core";
-import { ViewChild } from "@angular/core";
-import { Slides, NavController, AlertController } from "ionic-angular";
-import { StorePage } from "../../../pages/store/store";
-import { StoreProvider } from "../../../providers/store/store";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController
+} from "ionic-angular";
+import { StoreProvider } from "../../providers/store/store";
 
 /**
- * Generated class for the OffersComponent component.
+ * Generated class for the StorePage page.
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
  */
+
+@IonicPage()
 @Component({
-  selector: "offers",
-  templateUrl: "offers.html"
+  selector: "page-store",
+  templateUrl: "store.html"
 })
-export class OffersComponent {
-  text: string;
-  @ViewChild(Slides) slides: Slides;
-  hotOffers: any;
+export class StorePage {
+  show = "offers";
+  listOffers: any;
+  store: any;
 
   constructor(
     public navCtrl: NavController,
-    public stores: StoreProvider,
-    public alertCtrl: AlertController
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public stores: StoreProvider
   ) {
-    this.hotOffers = this.stores.getHotOffers();
-  }
+    this.store = this.stores.getStoreById(this.navParams.get("store"));
 
-  goToSlide() {
-    this.slides.slideTo(2, 500);
-  }
-
-  open(page, store) {
-    this.navCtrl.push(page, { store }, { direction: "forward", animate: true });
+    this.listOffers = this.store["offers"];
   }
 
   addCart(item) {
@@ -76,5 +76,15 @@ export class OffersComponent {
       buttons: ["OK"]
     });
     alert.present();
+  }
+
+  openOffer(offer, store) {
+    this.navCtrl.push(
+      "OfferPage",
+      { offer, store },
+      {
+        animate: true
+      }
+    );
   }
 }

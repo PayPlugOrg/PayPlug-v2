@@ -1,0 +1,29 @@
+page-store {
+  .p-mod {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .topright {
+    position: absolute;
+    top: 16px;
+    right: 4px;
+    font-size: 18px;
+    background: orange;
+    transform: rotate(45deg)
+  }
+  .container {
+    position: relative;
+  }
+  .alert-button:last-child {
+    background-color: #ffaa3f;
+    color: #ffffff;
+  }
+  .alert-button:last-child:active {
+    background-color: #ffaa3f;
+    color: #ffffff;
+  }
+  .alert-button:first-child {
+    background-color: #f2f2f2;
+    color: #222;
+  }
+}

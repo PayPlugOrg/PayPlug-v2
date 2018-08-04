@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { AlertServiceProvider } from '../../providers/alert-service/alert-service';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { HomePage } from "../home/home";
+import { AlertServiceProvider } from "../../providers/alert-service/alert-service";
+import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 
 /**
  * Generated class for the LoginPage page.
@@ -14,11 +14,10 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: "page-login",
+  templateUrl: "login.html"
 })
 export class LoginPage {
-
   form: FormGroup;
   isReady: boolean;
 
@@ -30,49 +29,59 @@ export class LoginPage {
     public formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: ["", Validators.required],
+      password: ["", Validators.required]
     });
-    this.form.controls['username'].setValue(localStorage.getItem('login'));
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.form.controls["username"].setValue(localStorage.getItem("login"));
   }
 
   login() {
-    this.alertService.showLoader('Validando acesso...');
-    this.authService.login(this.form.value).then((result) => {
-      this.alertService.loading.dismiss();
-      var data = result;
-      if (data) {
-        console.log(data['Token']);
-        localStorage.setItem('token', data['Token']);
-        localStorage.setItem('login', this.form.value['username']);
-        this.authService.getUserData();
-        this.navCtrl.setRoot(HomePage, {}, {
-          animate: true,
-          direction: 'forward'
-        })
+    this.alertService.showLoader("Validando acesso...");
+    this.authService.login(this.form.value).then(
+      result => {
+        this.alertService.loading.dismiss();
+        var data = result;
+        if (data) {
+          // console.log(data['Token']);
+          localStorage.setItem("token", data["Token"]);
+          localStorage.setItem("login", this.form.value["username"]);
+          this.authService.getUserData();
+          this.navCtrl.setRoot(
+            HomePage,
+            {},
+            {
+              animate: true,
+              direction: "forward"
+            }
+          );
+        }
+      },
+      err => {
+        this.alertService.loading.dismiss();
+        this.alertService.presentToast(err);
       }
-    }, (err) => {
-      this.alertService.loading.dismiss();
-      this.alertService.presentToast(err);
-    });
+    );
   }
 
   register() {
-    this.navCtrl.push('RegisterPage', {}, {
-      animate: true,
-      direction: 'forward'
-    });
+    this.navCtrl.push(
+      "RegisterPage",
+      {},
+      {
+        animate: true,
+        direction: "forward"
+      }
+    );
   }
 
   resetPassword() {
-    this.navCtrl.push('ResetPasswordPage', {}, {
-      animate: true,
-      direction: 'forward'
-    });
+    this.navCtrl.push(
+      "ResetPasswordPage",
+      {},
+      {
+        animate: true,
+        direction: "forward"
+      }
+    );
   }
-
 }

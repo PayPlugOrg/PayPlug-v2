@@ -40,11 +40,6 @@
       <ion-col col-12>
         <button block ion-button (click)="send()">Enviar</button>
       </ion-col>
-      <ion-col>
-        <button block ion-button (click)="open('ProductCreate')" color="orange-payplug" text-wrap>
-          É UMA LOJA? CADASTRE UM PRODUTO AQUI
-        </button>
-      </ion-col>
     </ion-row>
     <ion-row margin>
       <ion-segment [(ngModel)]="action" color="blue-payplug">
@@ -57,35 +52,8 @@
       </ion-segment>
     </ion-row>
   </ion-grid>
-
-  <ion-navbar color=blue-payplug>
-    <ion-buttons center>
-      <ion-grid>
-        <ion-row justify-content-center>
-
-          <button color=light ion-button icon-only outline (click)="open('HomePage')">
-            <ion-icon name="home"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="pricetags"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="settings"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline>
-            <ion-icon name="swap"></ion-icon>
-          </button>
-
-          <button color=light ion-button icon-only outline (click)="open('LoginPage')">
-            <ion-icon name="log-out"></ion-icon>
-          </button>
-        </ion-row>
-      </ion-grid>
-
-    </ion-buttons>
-  </ion-navbar>
-
 </ion-content>
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

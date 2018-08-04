@@ -1,0 +1,173 @@
+<!--
+  Generated template for the StorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color=blue-payplug>
+    <simple-header></simple-header>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-grid class="my-subheader" *ngIf="store">
+    <ion-row>
+      <ion-col text-center text-uppercase>
+        <p no-margin ion-text color=gray-payplug-3>{{store.name}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid no-padding no-margin>
+    <ion-row>
+      <ion-col col-4>
+        <button no-margin full style="font-size: 60%" ion-button icon-left text-wrap color=dark>
+          <ion-icon name="heart"></ion-icon>
+          MARCAR ESTA LOJA COMO FAVORITA
+        </button>
+      </ion-col>
+      <ion-col col-4>
+        <button no-margin full style="font-size: 60%" ion-button icon-left text-wrap color=dark>
+          <ion-icon name="share"></ion-icon>
+          MOSTRE ESTA LOJA PARA UM AMIGO
+        </button>
+      </ion-col>
+      <ion-col col-4>
+        <button no-margin full style="font-size: 60%" ion-button icon-left text-wrap color=dark>
+          <ion-icon name="star"></ion-icon>
+          AVALIE ESTA LOJA
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-slides>
+      <ion-slide>
+        <img style="width: 100%; height: 75px;" src="assets/imgs/offers/resturant.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img style="width: 100%; height: 75px;" src="assets/imgs/offers/resturant.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img style="width: 100%; height: 75px;" src="assets/imgs/offers/resturant.jpg">
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col offset-2 col-8>
+        <ion-segment color="blue-payplug" [(ngModel)]="show">
+          <ion-segment-button value="offers">
+            Ofertas
+          </ion-segment-button>
+          <ion-segment-button value="about">
+            Sobre
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+
+    <div [ngSwitch]="show">
+      <ion-row *ngSwitchCase="'offers'">
+        <ion-card *ngFor="let offer of listOffers" ion-text text-center>
+          <div class="container">
+            <img style="height: 100px;" src="assets/imgs/offers/resturant.jpg">
+            <div class="topright" ion-text color=light>
+              <p ion-text color=light>Desconto</p>
+              <h3 style="font-weight: bold">20%</h3>
+            </div>
+          </div>
+          <ion-card-content no-padding>
+            <ion-row (tap)="openOffer(offer, store.name)">
+              <ion-col col-7>
+                <ion-row>
+                  <h3 style="font-weight: bold">{{offer.title}}</h3>
+                </ion-row>
+              </ion-col>
+              <ion-col col-5 padding-vertical>
+                <h5 class="text-tachado">R$ {{offer.valueFrom}}</h5>
+                <h2 style="font-weight: bold">R$ {{offer.valueTo}}</h2>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <hr>
+              <ion-col no-padding style="width: 25%" (tap)="addCart(offer)">
+                <ion-icon [color]=offer.cart name="cart"></ion-icon>
+                <p style="font-size: 50%">COLOCAR NO CARRINHO</p>
+              </ion-col>
+              <ion-col no-padding style="width: 25%">
+                <ion-icon name="share"></ion-icon>
+                <p style="font-size: 50%">COMPARTILHAR OFERTA</p>
+              </ion-col>
+              <ion-col no-padding style="width: 25%" (tap)="like(offer)">
+                <ion-icon [color]="offer.like" name="heart"></ion-icon>
+                <p style="font-size: 50%">GOSTEI DA OFERTA</p>
+              </ion-col>
+              <ion-col no-padding style="width: 25%" (click)="showAlert(offer)">
+                <ion-icon color=primary name="time"></ion-icon>
+                <p style="font-size: 50%">TEMPO RESTANTE</p>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+
+      <ion-row *ngSwitchCase="'about'">
+        <ion-col>
+          <ion-item>
+            <h3 style="font-weight: bold" ion-text color=blue-payplug>ENDEREÇO</h3>
+            <p text-wrap>{{store.about.address}}.</p>
+          </ion-item>
+          <ion-item>
+            <h3 style="font-weight: bold" ion-text color=blue-payplug>CATEGORIA</h3>
+            <p text-wrap>{{store.about.category}}.</p>
+          </ion-item>
+          <ion-item>
+            <h3 style="font-weight: bold" ion-text color=blue-payplug>BIOGRAFIA</h3>
+            <p text-wrap>{{store.about.bio}}.</p>
+          </ion-item>
+          <ion-item>
+            <h3 style="font-weight: bold" ion-text color=blue-payplug>AVALIAÇÕES</h3>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <ion-icon name="star" color=orange-payplug></ion-icon>
+                  <ion-icon name="star" color=orange-payplug></ion-icon>
+                  <ion-icon name="star" color=orange-payplug></ion-icon>
+                  <ion-icon name="star" color=orange-payplug></ion-icon>
+                  <ion-icon name="star" color=orange-payplug></ion-icon>
+                </ion-col>
+                <ion-col col-6>
+                  <p text-wrap>{{store.about.evaluationMean}} - {{store.about.evaluation}} AVALIAÇÕES.</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item no-lines>
+            <h3 style="font-weight: bold" ion-text color=blue-payplug>LIKES</h3>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <ion-icon name="heart" color=danger></ion-icon>
+                  <ion-icon name="heart" color=danger></ion-icon>
+                  <ion-icon name="heart" color=danger></ion-icon>
+                  <ion-icon name="heart" color=danger></ion-icon>
+                  <ion-icon name="heart" color=danger></ion-icon>
+                </ion-col>
+                <ion-col col-6>
+                  <p text-wrap>{{store.about.likesMean}} - FAVORITADO {{store.about.likes}} VEZES.</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

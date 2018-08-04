@@ -17,6 +17,11 @@
   </ion-grid>
 
   <ion-grid>
+    <ion-row>
+      <ion-col offset-2 col-8>
+        <button style="font-weight: bold" ion-button outline block color="blue-payplug" (click)="open('CardNewPage')">ADICIONAR</button>
+      </ion-col>
+    </ion-row>
     <ion-row *ngFor="let card of cards">
       <ion-col col-12>
         <ion-card>
