@@ -23,6 +23,7 @@ export class StorePage {
   show = "offers";
   listOffers: any;
   store: any;
+  firstName: string;
 
   constructor(
     public navCtrl: NavController,
@@ -30,8 +31,8 @@ export class StorePage {
     public alertCtrl: AlertController,
     public stores: StoreProvider
   ) {
+    this.firstName = localStorage.getItem("firstname");
     this.store = this.stores.getStoreById(this.navParams.get("store"));
-
     this.listOffers = this.store["offers"];
   }
 
@@ -82,6 +83,16 @@ export class StorePage {
     this.navCtrl.push(
       "OfferPage",
       { offer, store },
+      {
+        animate: true
+      }
+    );
+  }
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
       {
         animate: true
       }

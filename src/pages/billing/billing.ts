@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { SocialSharing } from '@ionic-native/social-sharing';
-import StringMask from 'string-mask';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { HomePage } from "../home/home";
+import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { SocialSharing } from "@ionic-native/social-sharing";
+import StringMask from "string-mask";
 
 /**
  * Generated class for the BillingPage page.
@@ -14,18 +14,19 @@ import StringMask from 'string-mask';
 
 @IonicPage()
 @Component({
-  selector: 'page-billing',
-  templateUrl: 'billing.html',
+  selector: "page-billing",
+  templateUrl: "billing.html"
 })
 export class BillingPage {
-
-  formatter = new StringMask('###.###.###,##', { reverse: true });
-  private origem = localStorage.getItem('cpf');
-  private createdCode = "https://www.payplug.org:88/Lkn/Ctnr?o=" + this.origem + "&d=&v=";
-  username = localStorage.getItem('username');
+  formatter = new StringMask("###.###.###,##", { reverse: true });
+  private origem = localStorage.getItem("cpf");
+  private createdCode =
+    "https://www.payplug.org:88/Lkn/Ctnr?o=" + this.origem + "&d=&v=";
+  username = localStorage.getItem("username");
   form: FormGroup;
   valor: string = "";
   rawValue = "";
+  firstName: string;
 
   constructor(
     public navCtrl: NavController,
@@ -33,23 +34,23 @@ export class BillingPage {
     public formBuilder: FormBuilder,
     private socialSharing: SocialSharing
   ) {
+    this.firstName = localStorage.getItem("firstname");
     this.form = formBuilder.group({
-      value: ['', Validators.required]
+      value: ["", Validators.required]
     });
-    this.form.valueChanges.subscribe((v) => {
-
-    });
+    this.form.valueChanges.subscribe(v => {});
   }
 
   onInputTime(ev: any) {
     var reg = /[0-9]+/gi;
     if (ev.length <= 16) {
-     // console.log(ev);
-      this.rawValue = ev.replace(/(R\$ )|(\.)|(,)/gi, '');
-      
+      // console.log(ev);
+      this.rawValue = ev.replace(/(R\$ )|(\.)|(,)/gi, "");
+
       if (reg.test(this.rawValue)) {
         //console.log(this.rawValue);
-        this.createdCode = "https://www.payplug.org:88/Lkn/Ctnr?o=" + this.origem + "&d=&v=";
+        this.createdCode =
+          "https://www.payplug.org:88/Lkn/Ctnr?o=" + this.origem + "&d=&v=";
         this.createdCode = this.createdCode + this.rawValue;
       }
       var formattedValue = this.formatter.apply(this.rawValue);
@@ -59,40 +60,55 @@ export class BillingPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BillingPage');
+    console.log("ionViewDidLoad BillingPage");
   }
 
   open(page) {
-    if (page == 'HomePage') {
-      this.navCtrl.setRoot(HomePage, {}, {
-        animate: true,
-        direction: 'back'
-      });
-    } else if (page == 'LoginPage') {
-      this.navCtrl.setRoot(page, {}, {
-        animate: true,
-        direction: 'back'
-      });
+    if (page == "HomePage") {
+      this.navCtrl.setRoot(
+        HomePage,
+        {},
+        {
+          animate: true,
+          direction: "back"
+        }
+      );
+    } else if (page == "LoginPage") {
+      this.navCtrl.setRoot(
+        page,
+        {},
+        {
+          animate: true,
+          direction: "back"
+        }
+      );
     } else {
-      this.navCtrl.push(page, {}, {
-        animate: true,
-        direction: 'forward'
-      });
+      this.navCtrl.push(
+        page,
+        {},
+        {
+          animate: true,
+          direction: "forward"
+        }
+      );
     }
   }
 
   send() {
-    this.navCtrl.push('BillingIdentificationPage', {rawValue: this.rawValue, operation: 'Cobrança'}, {
-      animate: true,
-      direction: 'forward'
-    });
+    this.navCtrl.push(
+      "BillingIdentificationPage",
+      { rawValue: this.rawValue, operation: "Cobrança" },
+      {
+        animate: true,
+        direction: "forward"
+      }
+    );
   }
 
   actionTrigger(execute) {
     console.log(execute);
-    if (execute == 'share') {
+    if (execute == "share") {
       this.socialSharing.share(this.createdCode);
     }
   }
-
 }

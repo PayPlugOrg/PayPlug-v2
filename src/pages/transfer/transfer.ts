@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the TransferPage page.
@@ -10,16 +10,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-transfer',
-  templateUrl: 'transfer.html',
+  selector: "page-transfer",
+  templateUrl: "transfer.html"
 })
 export class TransferPage {
+  firstName: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TransferPage');
+    console.log("ionViewDidLoad TransferPage");
   }
-
 }

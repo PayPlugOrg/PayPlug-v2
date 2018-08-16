@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the ResetPasswordPage page.
@@ -10,19 +10,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-reset-password',
-  templateUrl: 'reset-password.html',
+  selector: "page-reset-password",
+  templateUrl: "reset-password.html"
 })
 export class ResetPasswordPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ResetPasswordPage');
+    console.log("ionViewDidLoad ResetPasswordPage");
   }
 
-  reset() {
-    
-  } 
+  reset() {}
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
+  }
 }

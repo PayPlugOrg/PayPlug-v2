@@ -22,11 +22,14 @@ export class CartPage {
   cart: boolean;
   shipColor = "gray-payplug-3";
   shops: any;
+  firstName: string;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController
   ) {
+    this.firstName = localStorage.getItem("firstname");
     this.shops = [
       {
         id: "1",
@@ -73,6 +76,16 @@ export class CartPage {
 
   ngAfterContentInit() {
     this.cart = false;
+  }
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
 
   changeShip(item) {

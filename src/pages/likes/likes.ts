@@ -15,7 +15,9 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 })
 export class LikesPage {
   likes: any;
+  firstName: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.firstName = localStorage.getItem("firstname");
     this.likes = [
       {
         id: "1",
@@ -27,7 +29,14 @@ export class LikesPage {
     ];
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad LikesPage");
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true,
+        direction: "forward"
+      }
+    );
   }
 }

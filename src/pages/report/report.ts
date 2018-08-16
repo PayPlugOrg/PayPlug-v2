@@ -37,15 +37,21 @@ export class ReportPage {
     this.items = this.dates;
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad ReportPage");
-  }
-
   segmentChanged(ev) {
     console.log(ev);
     if (this.type == "dates") {
       this.items = this.dates;
     } else this.items = this.cards;
+  }
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
 
   expandItem(item) {

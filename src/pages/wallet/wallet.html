@@ -1,11 +1,17 @@
 <ion-header>
-
   <ion-navbar color=blue-payplug>
     <ion-title>
-      <img height="40" src="assets/imgs/logo-branco.png">
+      <h2 ion-text color="light">Olá, {{firstName}}</h2>
     </ion-title>
+    <ion-buttons end>
+      <button color=light ion-button small icon-only outline (click)="open('MessagesPage')">
+        <ion-icon name="text"></ion-icon>
+      </button>
+      <button color=light ion-button small icon-only outline (click)="open('CartPage')">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -16,7 +22,7 @@
         <p no-margin ion-text color=gray-payplug-3>CARTEIRA</p>
       </ion-col>
     </ion-row>
-    
+
   </ion-grid>
   <ion-grid padding>
     <ion-row>

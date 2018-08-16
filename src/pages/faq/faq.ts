@@ -15,8 +15,10 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 })
 export class FaqPage {
   items: any[];
+  firstName: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.firstName = localStorage.getItem("firstname");
     this.items = [
       {
         title: "Como realizar um pagamento",
@@ -50,9 +52,7 @@ export class FaqPage {
       }
     ];
   }
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad FaqPage");
-  }
+
   expandItem(item) {
     this.items.map(listItem => {
       if (item == listItem) {
@@ -62,5 +62,15 @@ export class FaqPage {
       }
       return listItem;
     });
+  }
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 
 /**
  * Generated class for the TicketPage page.
@@ -10,16 +10,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-ticket',
-  templateUrl: 'ticket.html',
+  selector: "page-ticket",
+  templateUrl: "ticket.html"
 })
 export class TicketPage {
-
+  firstName: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.firstName = localStorage.getItem("firstname");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TicketPage');
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
-
 }

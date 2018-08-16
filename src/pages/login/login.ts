@@ -1,5 +1,10 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  MenuController
+} from "ionic-angular";
 import { HomePage } from "../home/home";
 import { AlertServiceProvider } from "../../providers/alert-service/alert-service";
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
@@ -26,7 +31,8 @@ export class LoginPage {
     public navParams: NavParams,
     public alertService: AlertServiceProvider,
     public authService: AuthServiceProvider,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private menuCtrl: MenuController
   ) {
     this.form = formBuilder.group({
       username: ["", Validators.required],
@@ -46,6 +52,7 @@ export class LoginPage {
           localStorage.setItem("token", data["Token"]);
           localStorage.setItem("login", this.form.value["username"]);
           this.authService.getUserData();
+          this.menuCtrl.enable(true, "authenticated");
           this.navCtrl.setRoot(
             HomePage,
             {},

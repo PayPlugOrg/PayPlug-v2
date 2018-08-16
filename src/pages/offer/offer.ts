@@ -1,5 +1,10 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController
+} from "ionic-angular";
 
 /**
  * Generated class for the OfferPage page.
@@ -16,13 +21,34 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 export class OfferPage {
   store: any;
   offer: any;
-  show: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  show = "timeLeft";
+  firstName: string;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController
+  ) {
+    this.firstName = localStorage.getItem("firstname");
     this.store = this.navParams.get("store");
     this.offer = this.navParams.get("offer");
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad OfferPage");
+  addCart(item) {
+    const alert = this.alertCtrl.create({
+      title: "CARRINHO",
+      message: `VOCÊ ADICIONOU ESTA OFERTA AO CARRINHO`,
+      buttons: ["OK"]
+    });
+    alert.present();
+  }
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
 }

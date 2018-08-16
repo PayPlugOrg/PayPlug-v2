@@ -7,7 +7,14 @@
 <ion-header>
 
   <ion-navbar color=blue-payplug>
-    <simple-header [message]="message" [message]="cart"></simple-header>
+    <ion-title>
+      <h2 ion-text color="light">Olá, {{firstName}}</h2>
+    </ion-title>
+    <ion-buttons end>
+      <button color=light ion-button small icon-only outline (click)="open('CartPage')">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -18,6 +25,17 @@
     <ion-row>
       <ion-col text-center text-uppercase>
         <p no-margin ion-text color=gray-payplug-3>MENSAGENS</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row *ngFor="let message of messages">
+      <ion-col>
+        <ion-item>
+          <h3 style="font-weight: bold" ion-text color=blue-payplug>{{message.title}}</h3>
+          <p text-wrap text-justify>{{message.content}}</p>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>

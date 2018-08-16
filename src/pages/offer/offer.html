@@ -6,7 +6,17 @@
 -->
 <ion-header>
   <ion-navbar color=blue-payplug>
-    <simple-header></simple-header>
+    <ion-title>
+      <h2 ion-text color="light">Olá, {{firstName}}</h2>
+    </ion-title>
+    <ion-buttons end>
+      <button color=light ion-button small icon-only outline (click)="open('MessagesPage')">
+        <ion-icon name="text"></ion-icon>
+      </button>
+      <button color=light ion-button small icon-only outline (click)="open('CartPage')">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -38,13 +48,13 @@
     </ion-row>
     <ion-row>
       <ion-col col-5>
-        <p style="font-weight: bold" ion-text text-right color=blue-payplug>R$ </p>
+        <p no-margin style="font-weight: bold" ion-text text-right color=blue-payplug>R$ </p>
       </ion-col>
       <ion-col col-7>
         <h1 no-margin style="font-weight: bold" ion-text text-left color=blue-payplug>{{offer.valueTo}}</h1>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row margin-bottom>
       <ion-col col-12>
         <p no-margin style="font-weight: bold" class="text-tachado" ion-text text-center color=blue-payplug>R$ {{offer.valueFrom}}</p>
       </ion-col>
@@ -53,10 +63,10 @@
     <ion-row>
       <ion-col offset-2 col-8>
         <ion-segment color="blue-payplug" [(ngModel)]="show">
-          <ion-segment-button style="font-size: 80%" value="timeLeft">
+          <ion-segment-button style="font-size: 75%" value="timeLeft">
             TEMPO RESTANTE
           </ion-segment-button>
-          <ion-segment-button style="font-size: 80%" value="description">
+          <ion-segment-button style="font-size: 75%" value="description">
             DESCRIÇÃO
           </ion-segment-button>
         </ion-segment>
@@ -66,16 +76,58 @@
     <div [ngSwitch]="show">
       <ion-row *ngSwitchCase="'timeLeft'">
         <ion-col col-6>
-
+          <h1 ion-text text-center color=blue-payplug style="font-weight: bold">{{offer.timeLeft}}</h1>
         </ion-col>
         <ion-col col-6>
           <ion-row>
-            <ion-icon name="close" color=danger></ion-icon>
-            NÃO POSSUI FRETE
+            <ion-col col-2>
+              <ion-icon style="font-size: 2.2em" name="close" color=danger></ion-icon>
+            </ion-col>
+            <ion-col col-10>
+              <p style="font-size: 60%">NÃO POSSUI FRETE</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-2>
+              <ion-icon style="font-size: 2.2em" name="shuffle" color=primary></ion-icon>
+            </ion-col>
+            <ion-col col-10>
+              <p style="font-size: 60%">FRETE OPCIONAL</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-2>
+              <ion-icon style="font-size: 2.2em" name="bus" color=orange-payplug></ion-icon>
+            </ion-col>
+            <ion-col col-10>
+              <p style="font-size: 60%">APENAS FRETE</p>
+            </ion-col>
           </ion-row>
         </ion-col>
       </ion-row>
-      <ion-row *ngSwitchCase="'description'"></ion-row>
+      <ion-row *ngSwitchCase="'description'">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <h4 ion-text color=blue-payplug>DESCRIÇÃO DO PRODUTO</h4>
+              <p ion-text text-wrap>{{offer.description}}</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <h4 ion-text color=blue-payplug>OUTRAS INFORMAÇÕES</h4>
+              <p ion-text text-wrap>{{offer.description}}</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+      <ion-row>
+        <ion-col offset-2 col-8>
+          <button ion-button outline block color=blue-payplug (click)="addCart(offer)">COMPRAR</button>
+        </ion-col>
+      </ion-row>
     </div>
   </ion-grid>
 

@@ -22,11 +22,13 @@ export class UtilitiesPage {
   partners: any[];
   editButton: string = "ALTERAR";
   editing: boolean = false;
+  firstName: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController
   ) {
+    this.firstName = localStorage.getItem("firstname");
     this.partners = [
       {
         partner: "Abrinq",
@@ -117,6 +119,16 @@ export class UtilitiesPage {
     array.splice(indexes.from, 1);
     array.splice(indexes.to, 0, element);
     return array;
+  }
+
+  open(page) {
+    this.navCtrl.push(
+      page,
+      {},
+      {
+        animate: true
+      }
+    );
   }
 
   reorderData(indexes: any) {

@@ -31,6 +31,7 @@ export class CardManagementPage {
     cvc: "•••"
   };
   masks: any;
+  firstName: string;
 
   constructor(
     public navCtrl: NavController,
@@ -39,6 +40,7 @@ export class CardManagementPage {
     public cardProvider: CardProvider,
     public alertCtrl: AlertController
   ) {
+    this.firstName = localStorage.getItem("firstname");
     this.cardProvider.getCards(localStorage.getItem("cpf")).then(result => {
       this.cards = result;
     });
